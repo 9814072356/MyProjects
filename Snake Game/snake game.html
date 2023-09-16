@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	canvas {
+		display: block;
+		position: absolute;
+		margin: 0;
+		top: 0;
+		padding:0;
+		right: 0;
+		left: 0;
+	}
+	</style>
+</head>
+<body>
+<!--script src="C:\Users\Admin\Desktop\JS projects\hex color clock\js hex color clock 2.js"></script-->
+<script type="text/javascript" src="C:\Users\kyanh\Desktop\JS projects\random color generator.js"></script>
+<script>
+	var foodScore = 1;
+	var Cols=68, Rows=35;
+	var Empty=0, Snake=1, Fruit=2;
+	var Left=100, Up=200, Right=300, Down=400;
+	var Key_up = 38, Key_down = 40, Key_left = 37, Key_right = 39, W = 87, S = 83, A = 65, D = 68, key8 = 104, key2 = 98, key4 = 100, key6 = 102, Start = 13, R = 82, P =  80;
+	//var level = prompt("This is a snake game!!!\n\n1 to 5, please choose your desired difficulties\n\n1-baby, 2-easy, 3-medium, 4-high medium, 5-hard","5")
+	var value = 2;
+	var snake_speed = value;
+	var canvas = document.createElement("canvas"), ctx = canvas.getContext("2d"), keystate, frames;
+	var score;
+	var highScore = 0;
+
+	var grid = {
+		width: null,
+		height: null,
+		_grid: null,
+		init: function(d, c, r){
+			this.width = c;
+			this.height = r;
+			this._grid = [];
+			for(var x = 0; x < c; x++){
+				this._grid.push([]);
+				for(var y = 0; y < r; y++){
+					this._grid[x].push(d);
+				}
+			}
+		},
+		set: function(val, x, y){
+			this._grid[x][y] = val;
+		},
+		get: function(x, y){
+			return this._grid[x][y];
+		}
+	}
+
+	var snake = {
+		direction: null,
+		last: null,
+		_queue: null,
+		init: function(d, x, y){
+			this.direction = d;
+			this._queue = [];
+			this.insert(x, y);
+		},
+		insert: function(x, y){
+			this._queue.unshift({x:x, y:y});
+			this.last = this._queue[0];
+		},
+		remove: function(){
+			return this._queue.pop();
+		},
+		draw: function(){
+			var cellWidth = canvas.width/grid.width;
+			var cellHeight = canvas.height/grid.height;
+
+			for(var x = 0; x < grid.width; x++){
+				for(var y = 0; y < grid.height; y++){
+					if(grid.get(x,y) === Empty){
+						if(score < 10){
+							ctx.fillStyle = "white";							
+						}
+						else if(score < 20){
+							ctx.fillStyle = "yellow";
+						}
+						else if(score < 30){
+							ctx.fillStyle = "black";
+						}
+						else if(score < 40){
+							ctx.fillStyle = "Cornsilk";
+						}
+						else if(score < 50){
+							ctx.fillStyle = "LavenderBlush";
+						}
+						else if(score < 60){
+							ctx.fillStyle = "Orange";
+						}
+						else if(score < 70){
+							ctx.fillStyle = "Orchid";
+						}
+						else if(score < 80){
+							ctx.fillStyle = "MintCream";
+						}
+						else if(score < 90){
+							ctx.fillStyle = "GreenYellow";
+						}
+						else if(score < 100){
+							ctx.fillStyle = "Bisque";
+						}
+						else if(score < 110){
+							ctx.fillStyle = "LightPink";
+						}
+						else if(score < 120){
+							ctx.fillStyle = "Teal";
+						}
+						else if(score < 130){
+							ctx.fillStyle = "Khaki";
+						}
+						else if(score < 140){
+							ctx.fillStyle = "HoneyDew";
+						}
+						else{
+							ctx.fillStyle = "LightGreen";
+						}																														
+					}
+					if(grid.get(x,y) === Fruit){
+						if(score < 10){
+							ctx.fillStyle = "red";							
+						}
+						else if(score < 20){
+							ctx.fillStyle = "blue";
+						}
+						else if(score < 30){
+							ctx.fillStyle = "white";
+						}
+						else if(score < 40){
+							ctx.fillStyle = "DarkOrange";
+						}
+						else if(score < 50){
+							ctx.fillStyle = "HotPink";
+						}
+						else if(score < 60){
+							ctx.fillStyle = "DarkMagenta";
+						}
+						else if(score < 70){
+							ctx.fillStyle = "Gold";
+						}
+						else if(score < 80){
+							ctx.fillStyle = "LightBlue";
+						}
+						else if(score < 90){
+							ctx.fillStyle = "Crimson";
+						}
+						else if(score < 100){
+							ctx.fillStyle = randomColor();
+						}
+						else if(score < 110){
+							ctx.fillStyle = randomColor();
+						}
+						else if(score < 120){
+							ctx.fillStyle = randomColor();
+						}
+						else if(score < 130){
+							ctx.fillStyle = randomColor();
+						}
+						else if(score < 140){
+							ctx.fillStyle = randomColor();
+						}
+						else{
+							ctx.fillStyle = randomColor({luminosity: 'light'});
+						}																		
+					}
+					if(grid.get(x,y) === Snake){
+						if(score < 10){
+							ctx.fillStyle = "cyan";							
+						}
+						else if(score < 20){
+							ctx.fillStyle = "green";
+						}
+						else if(score < 30){
+							ctx.fillStyle = "white";
+						}
+						else if(score < 40){
+							ctx.fillStyle = "BlueViolet";
+						}
+						else if(score < 50){
+							ctx.fillStyle = "DodgerBlue";
+						}
+						else if(score < 60){
+							ctx.fillStyle = "FloralWhite";
+						}
+						else if(score < 70){
+							ctx.fillStyle = "LavenderBlush";
+						}
+						else if(score < 80){
+							ctx.fillStyle = "LightCoral";
+						}
+						else if(score < 90){
+							ctx.fillStyle = "Cornsilk";
+						}
+						else if(score < 100){
+							ctx.fillStyle = randomColor({hue: "red"});
+						}
+						else if(score < 110){
+							ctx.fillStyle = randomColor({hue: "green"});
+						}
+						else if(score < 120){
+							ctx.fillStyle = randomColor({hue: "blue"});
+						}
+						else if(score < 130){
+							ctx.fillStyle = randomColor({hue: "purple"});
+						}
+						else if(score < 140){
+							ctx.fillStyle = randomColor({hue: "pink"});
+						}
+						else{
+							ctx.fillStyle = randomColor({hue: "yellow"});
+						}																														
+					}				
+					ctx.fillRect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
+				}
+			}
+		}
+	}
+
+	function setFood(){
+		var empty = [];
+		for(var x = 0; x < grid.width; x++){
+			for(var y = 0; y < grid.height; y++){
+				if(grid.get(x,y) === Empty){
+					empty.push({x:x, y:y});
+				}
+			}
+		}
+		var randpos = empty[Math.floor(Math.random()*empty.length)];
+		grid.set(Fruit, randpos.x, randpos.y);
+	}
+
+	function main(){
+		canvas.width = window.innerWidth;//Cols*23.47;
+		canvas.height = window.innerHeight;//Rows*23.469;
+		document.body.appendChild(canvas);
+
+		frames = 0;
+		keystate = {};
+		document.addEventListener("keydown", function(evt){
+			keystate[evt.keyCode] = true;
+		});
+		document.addEventListener("keyup", function(evt){
+			delete keystate[evt.keyCode];
+		});
+
+
+
+		init();
+		loop();
+	}
+
+
+	function init(){	
+		score = 0;
+		grid.init(Empty, Cols, Rows);
+		var snakePos = {x: Cols/2, y: Rows-1};
+		snake.init(Up, snakePos.x, snakePos.y);
+		grid.set(Snake, snakePos.x, snakePos.y);
+
+
+		setFood();
+	}
+
+	function loop(){
+		update();
+
+		draw();
+		
+		if(keystate[P]){
+			snake_speed = 0;
+		}
+		if(keystate[R]){
+			snake_speed = value;
+		}
+		window.requestAnimationFrame(loop, canvas);
+
+	}
+
+	function updateHighscore(){
+		if(score > highScore){
+			highScore = score;
+		}
+		else{
+			highScore = highScore;
+		}
+	}
+	function update(){
+		frames++;
+			if(snake.direction !== Right && keystate[Key_left] || keystate[A] || keystate[key4]){
+				snake.direction = Left;
+			}
+			if(snake.direction !== Down && keystate[Key_up] || keystate[W] || keystate[key8]){
+				snake.direction = Up;
+			}
+			if(snake.direction !== Left && keystate[Key_right] || keystate[D] || keystate[key6]){
+				snake.direction = Right;
+			}
+			if(snake.direction !== Up && keystate[Key_down] || keystate[S] || keystate[key2]){
+				snake.direction = Down;
+			}
+
+
+			if(frames%snake_speed === 0){
+				var newX = snake.last.x;
+				var newY = snake.last.y;
+
+				switch(snake.direction){
+					case Left:
+						newX--;
+						break;
+					case Up:
+						newY--;
+						break;
+					case Right:
+						newX++;
+						break;
+					case Down:
+						newY++;
+						break;
+			}
+
+			if(newX < 0 ){
+				newX = grid.width-1;
+			}else if( grid.width-1 < newX ){
+				newX = 0;
+			}else if(newY < 0){
+				newY = grid.height;
+			}else if(grid.height-1 < newY ){
+				newY = 0;				
+			}else if(grid.get(newX, newY) === Snake){				
+				init();								
+				return updateHighscore();
+			}
+
+			if(grid.get(newX, newY) === Fruit){
+				var tail = {x: newX, y: newY};
+				setFood();
+				score += foodScore;
+				updateHighscore();
+			}else{
+				var tail = snake.remove();
+				grid.set(Empty, tail.x, tail.y);
+				tail.x = newX;
+				tail.y = newY;
+			}
+			grid.set(Snake, tail.x, tail.y);			
+			snake.insert(tail.x, tail.y);
+		}
+	}
+
+	function draw(){
+		snake.draw();
+		if(score >= 20 && score < 30){
+			ctx.fillStyle = "white";
+			ctx.font="40px Segoe UI Light";
+			ctx.fillText("Score: " + score, 10, 30);
+			ctx.fillStyle = "white";
+			ctx.font="40px Segoe UI Light";
+			ctx.fillText("High Score: " + highScore, canvas.width - 300, 30);			
+		}
+		else{
+			ctx.fillStyle = "FireBrick";
+			ctx.font="40px Segoe UI Light";
+			ctx.fillText("Score: " + score, 10, 30);
+			ctx.fillStyle = "FireBrick";
+			ctx.font="40px Segoe UI Light";
+			ctx.fillText("High Score: " + highScore, canvas.width - 300, 30);
+		}
+
+	}
+
+	main();
+</script>
+</body>
+</html>

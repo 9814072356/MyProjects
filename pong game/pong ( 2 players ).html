@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	canvas {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+</style>
+</head>
+<body>
+<script>
+	var  Width = window.innerWidth, Height = innerHeight, pi = Math.PI;
+	var UpArrow = 38, DownArrow = 40, W = 87, S = 83, num8 = 104, num2 = 98, R = 82;
+	var canvas, ctx, keyPress;
+	var player1, player2, ball;
+	var level = prompt("This is a ping pong game!!!\n\n1 to 10, please choose your desired difficulties\n\n1-easy, 2-medium, 3-high medium, 4-hard, 5-harder","5");
+	var name1 = prompt("Please insert your name here player 1 ","In your face, I am ").toUpperCase();
+	var name2 = prompt("Please insert your name here player 2 ","Get it you loser. I am ").toUpperCase();
+	var victory_point = 1;
+	var paused = false;
+
+	player1 = {
+		x: null,
+		y: null,
+		width: 15,
+		height: 200,
+		player1Name: "",
+		player1Score: 0,
+		pScoreX: 481,
+		scoreY: 80,
+		update: function(){
+			if(!paused){				
+				this.y = Math.max(Math.min(this.y, Height - this.height), 0);
+				if(level === "4" || level === "5" || level === null) {
+					if(keyPress[W]) this.y -= 25;
+					if(keyPress[S]) this.y += 25;
+				}
+				else{
+					if(keyPress[W]) this.y -= 7;
+					if(keyPress[S]) this.y += 7;	
+				}
+			}
+			if(name1 !== null || name1 !== "In your face, I am"){this.player1Name = name1;}
+			else{this.player1Name = "Get it you loser. I am";}
+		},
+		draw: function(){
+			ctx.fillStyle = "red";
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+			ctx.font ="50px Arial";
+			ctx.fillStyle = "#FF8C00";
+			ctx.fillText(this.player1Score, this.pScoreX, this.scoreY);
+
+		}
+	};
+	player2 = {
+		x: null,
+		y: null,
+		width: 15,
+		height: 200,
+		player2Name: "",
+		player2Score: 0,
+		aScoreX: 881,
+		scoreY: 80,
+		update: function(){
+			if(level === "1") {ball.speed = 22;}
+			if(level === "2") {ball.speed = 24;}
+			if(level === "3") {ball.speed = 26;}
+			if(level === "4") {ball.speed = 38;}
+			if(level === "5") {ball.speed = 30;}
+			if(!paused){				
+				this.y = Math.max(Math.min(this.y, Height - this.height), 0);
+				if(level === "4" || level === "5" || level === null) {
+					if(keyPress[UpArrow] || keyPress[num8]) this.y -= 25;
+					if(keyPress[DownArrow] || keyPress[num2]) this.y += 25;
+				}
+				else{
+					if(keyPress[UpArrow] || keyPress[num8]) this.y -= 7;
+					if(keyPress[DownArrow] || keyPress[num2]) this.y += 7;	
+				}
+			}
+			if(name2 !== null || name2 !== "In your face, I am"){this.player2Name = name2;}
+			else{this.player2Name = "In your face, I am";}
+		},
+		draw: function(){
+			ctx.fillStyle = "red";
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+			ctx.font ="50px Arial";
+			ctx.fillStyle = "#FF8C00";
+			ctx.fillText(this.player2Score, this.aScoreX, this.scoreY);			
+		}
+	};
+	ball = {
+		x: null,
+		y: null,
+		
+		side: 10,
+		vel : null,
+		speed: 20,
+
+		serve: function(side){
+			var r = Math.random();
+			this.x = side === 1 ? player1.x + player1.width : player2.x - this.side;
+			this.y = (Height - this.side)*r;
+			var phi = 0.1*pi*(2*r-1);
+			if(!paused){
+				this.vel.y = 1.5*this.speed*Math.sin(phi);
+				this.vel.x = side*this.speed*Math.cos(phi);
+			}
+		},
+
+		update: function(){
+			if(!paused){
+				this.x += this.vel.x;
+				this.y += this.vel.y;
+			}
+
+			if(this.y < 0 || this.y+this.side > Height){
+				var offSet = this.vel.y < 0 ? 0 - this.y :Height - (this.y+this.side);
+				this.y += offSet;
+				this.vel.y *= -1
+			}
+
+			var intersect = function(ax, ay, aw, ah, bx, by, bw, bh){
+				return ax<bx+bw && ay<by+bh && bx<ax+aw && by<ay+ah;
+			};
+			var padle = this.vel.x < 0 ? player1:player2;
+			if(intersect(padle.x, padle.y, padle.width, padle.height, this.x, this.y, this.side, this.side)){
+				this.x = padle===player1 ? player1.x+player1.width : player2.x - this.side;
+				var n = (this.y+this.side - padle.y)/(padle.height+this.side);
+				var phi = 0.25*pi*(2*n-1);
+
+				var smash = Math.abs(phi) > 0.2*pi ? 1.5 : 1;
+				this.vel.x = smash*(padle===player1 ? 1 : -1)*this.speed*Math.cos(phi);
+				this.vel.y = smash*this.speed*Math.sin(phi);
+			}
+
+			if(this.x+this.side < 0 ){
+				this.serve(padle===player1 ? 1 : 1);
+				player2.player2Score += 1;
+			}
+			if(this.x > Width){
+				this.serve(padle===player1 ? -1 : -1);
+				player1.player1Score += 1;
+			}
+		},
+		draw: function(){
+			ctx.fillStyle = "white";
+			//ctx.fillRect(this.x, this.y, this.side, this.side);
+			ctx.beginPath();
+			ctx.arc(this.x, this.y, this.side, 0, pi*2, true);
+			ctx.fill();
+		}
+	};
+
+		gameSet = {
+					
+				gameOver: false,
+					
+				update: function()
+				{
+					if(!this.gameOver)
+					{
+						if(player1.player1Score > victory_point || player2.player2Score > victory_point)
+						{
+							this.gameOver=true;
+							paused=true;
+						}
+					}
+					else
+					{
+						if(keyPress[R])
+						{
+							this.gameOver=false;
+							paused=false;
+							player1.player1Score = 0;
+							player1.x = player1.width;
+							player1.y = ( Height - player1.height)/2;
+							
+							player2.player2Score = 0;
+							player2.x = Width - (player1.width + player2.width);
+							player2.y = (Height - player2.height)/2;
+							
+							ball.x = (Width - ball.side)/2;
+							ball.y = (Height - ball.side)/2;
+							
+							// set ball velocitys
+							ball.vel = {
+								x: ball.speed,
+								y: 0,
+							}
+						}
+					}
+				},
+			
+				draw: function()
+				{
+					if(this.gameOver)
+					{
+						ctx.fillRect(this.x, this.y, this.width, this.height)
+						ctx.font="70px Segoe UI Light";
+						ctx.fillStyle = 'White';
+						if(player1.player1Score > victory_point){ctx.fillText(player1.player1Name + "THE WINNER (/^o^)/", 20, 300);}
+						if(player2.player2Score > victory_point){ctx.fillText(player2.player2Name + "THE WINNER (/^o^)/", 20, 300);}
+						ctx.font="50px Segoe UI Light";
+						ctx.fillStyle = "white";
+						ctx.fillText("R-play again", 150, 375);
+						ctx.fillText("F5-select other levels", 150, 450);
+					}
+				}
+			}
+	
+	var main = function(){
+		canvas = document.createElement("canvas");
+		canvas.width = Width;
+		canvas.height = Height;
+		ctx = canvas.getContext("2d");
+
+		document.body.appendChild(canvas);
+
+		keyPress = {};
+		document.addEventListener("keydown", function(evt){
+			keyPress[evt.keyCode] = true;
+		})
+		document.addEventListener("keyup", function(evt){
+			delete keyPress[evt.keyCode];
+		})
+		init();
+
+		var loop = function(){
+			update();
+			draw();
+			window.requestAnimationFrame(loop,canvas);
+		};
+
+		window.requestAnimationFrame(loop,canvas);
+	}
+	var init = function(){
+		player1.x = player1.width;
+		player1.y = (Height - player1.height)/2;
+		
+		player2.x = Width - (player1.width + player2.width);
+		player2.y = (Height - player2.height)/2;
+		
+		ball.x = (Width - ball.side)/2;
+		ball.y = (Height - ball.side)/2;
+
+		ball.vel = {
+			x: ball.speed,
+			y: 0
+		}
+	}
+	var update = function(){
+		player1.update();
+		player2.update();
+		ball.update();
+		gameSet.update();
+	}
+	var draw = function(){
+		ctx.fillStyle = "#4169E1";
+		ctx.fillRect(0 , 0 , Width , Height);
+		
+		ctx.save();
+		
+		player1.draw();
+		player2.draw();
+		ball.draw();
+
+		var w = 4;
+		var x = (Width - w)/2;
+		var y = 0;
+		var step = Height/20
+		while(y < Height){
+			ctx.fillStyle = "White";
+			ctx.fillRect(x , y , w , step/2)
+			y += step;
+		}
+		gameSet.draw();
+		ctx.restore();
+	}
+	main();
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	canvas {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+</style>
+</head>
+<body>
+<script>
+	var  Width = window.innerWidth, Height = window.innerHeight, pi = Math.PI;
+	var UpArrow = 38, DownArrow = 40, W = 87, S = 83, num8 = 104, num2 = 98, R = 82, P = 80;
+	var canvas, ctx, keyPress;
+	var player, ai, ball;
+	var level = prompt("This is a ping pong game!!!\n\nfrom 1 to 10, please choose your desired difficulties\n\n1-baby, 2-easy, 3-medium, 4-high medium, 5-hard\n\n\nscore 15 points to win","5");
+	var victory_point = 15;
+	var paused = false;
+
+	player = {
+		x: null,
+		y: null,
+		width: 30,
+		height: 180,
+		playerScore: 0,
+		pScoreX: 481,
+		scoreY: 80,
+		update: function(){
+			if(!paused){				
+				this.y = Math.max(Math.min(this.y, Height - this.height), 0);
+				if(keyPress[UpArrow] || keyPress[W] || keyPress[num8]) this.y -= 20;
+				if(keyPress[DownArrow] || keyPress[S] || keyPress[num2]) this.y += 20;	
+			}
+		},
+		draw: function(){
+			ctx.fillStyle = "blue";
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+			ctx.font ="50px Arial";
+			ctx.fillStyle = "Salmon";
+			ctx.fillText(this.playerScore, this.pScoreX, this.scoreY);
+
+		}
+	};
+	ai = {
+		x: null,
+		y: null,
+		width: 30,
+		height: 180,
+		aiDiff: 0,
+		aiScore: 0,
+		aScoreX: 881,
+		scoreY: 80,
+		update: function(){
+			if(level === "1") {this.aiDiff = 0.05; ball.speed = 17;}
+			if(level === "2") {this.aiDiff = 0.06; ball.speed = 19;}
+			if(level === "3") {this.aiDiff = 0.07; ball.speed = 21;}
+			if(level === "4") {this.aiDiff = 0.08; ball.speed = 23;}
+			if(level === "5") {this.aiDiff = 0.13; ball.speed = 25;}
+			if(!paused){
+				var destination = ball.y - (this.height - ball.side) * 0.5;
+				this.y += (destination - this.y) * this.aiDiff;
+				this.y = Math.max(Math.min(this.y, Height - this.height), 0);
+			}
+		},
+		draw: function(){
+			ctx.fillStyle = "blue";
+			ctx.fillRect(this.x, this.y, this.width, this.height);
+			ctx.font ="50px Arial";
+			ctx.fillStyle = "Salmon";
+			ctx.fillText(this.aiScore, this.aScoreX, this.scoreY);			
+		}
+	};
+	ball = {
+		x: null,
+		y: null,
+		
+		side: 10,
+		vel : null,
+		speed: 12,
+
+		serve: function(side){
+			var r = Math.random();
+			this.x = side === 1 ? player.x + player.width : ai.x - this.side;
+			this.y = (Height - this.side)*r;
+			var phi = 0.1*pi*(2*r-1);
+			if(!paused){
+				this.vel.y = 1.5*this.speed*Math.sin(phi);
+				this.vel.x = side*this.speed*Math.cos(phi);
+			}
+		},
+
+		update: function(){
+			if(!paused){
+				this.x += this.vel.x;
+				this.y += this.vel.y;
+			}
+
+			if(this.y < 0 || this.y+this.side > Height){
+				var offSet = this.vel.y < 0 ? 0 - this.y :Height - (this.y+this.side);
+				this.y += offSet;
+				this.vel.y *= -1
+			}
+
+			var intersect = function(ax, ay, aw, ah, bx, by, bw, bh){
+				return ax<bx+bw && ay<by+bh && bx<ax+aw && by<ay+ah;
+			};
+			var padle = this.vel.x < 0 ? player:ai;
+			if(intersect(padle.x, padle.y, padle.width, padle.height, this.x, this.y, this.side, this.side)){
+				this.x = padle===player ? player.x+player.width : ai.x - this.side;
+				var n = (this.y+this.side - padle.y)/(padle.height+this.side);
+				var phi = 0.25*pi*(2*n-1);
+
+				var smash = Math.abs(phi) > 0.2*pi ? 1.5 : 1;
+				this.vel.x = smash*(padle===player ? 1 : -1)*this.speed*Math.cos(phi);
+				this.vel.y = smash*this.speed*Math.sin(phi);
+			}
+
+			if(this.x+this.side < 0 ){
+				this.serve(padle===player ? 1 : 1);
+				ai.aiScore += 1;
+			}
+			if(this.x > Width){
+				this.serve(padle===player ? -1 : -1);
+				player.playerScore += 1;
+			}
+		},
+		draw: function(){
+			ctx.fillStyle = "DarkViolet";
+			//ctx.fillRect(this.x, this.y, this.side, this.side);
+			ctx.beginPath();
+			ctx.arc(this.x, this.y, this.side, 0, pi*2, true);
+			ctx.fill();
+		}
+	};
+
+		gameSet = {
+					
+				Text: "",
+				gameOver: false,
+					
+				update: function()
+				{
+					if(!this.gameOver)
+					{
+						if(player.playerScore >= victory_point)
+						{
+							this.Text = "You Won (/^o^)/";
+							this.gameOver=true;
+							paused=true;
+						}
+						else if(ai.aiScore >= victory_point)
+						{
+							this.Text = "You Lost (=.=')";
+							this.gameOver=true;
+							paused=true;
+						}
+						else if(keyPress[P]){
+							paused = true;
+						}
+						else if(keyPress[R]){
+							paused = false;
+						}
+					}
+					else
+					{
+						if(keyPress[R])
+						{
+							this.gameOver=false;
+							paused=false;
+							player.playerScore = 0;
+							player.x = player.width;
+							player.y = ( Height - player.height)/2;
+							
+							ai.aiScore = 0;
+							ai.x = Width - (player.width + ai.width);
+							ai.y = (Height - ai.height)/2;
+							
+							ball.x = (Width - ball.side)/2;
+							ball.y = (Height - ball.side)/2;
+							
+							// set ball velocitys
+							ball.vel = {
+								x: ball.speed,
+								y: 0,
+							}
+						}
+						
+					}
+				},
+			
+				draw: function()
+				{
+					if(this.gameOver)
+					{
+						ctx.fillRect(this.x, this.y, this.width, this.height)
+						ctx.font="80px Segoe UI Light";
+						ctx.fillStyle = 'White';
+						ctx.fillText(this.Text, 175, 300);
+						ctx.font="50px Segoe UI Light";
+						ctx.fillStyle = "white";
+						ctx.fillText("R-play again", 150, 375);
+						ctx.fillText("F5-select other levels", 150, 450);
+					}
+				}
+			}
+	
+	var main = function(){
+		canvas = document.createElement("canvas");
+		canvas.width = Width;
+		canvas.height = Height;
+		ctx = canvas.getContext("2d");
+
+		document.body.appendChild(canvas);
+
+		keyPress = {};
+		document.addEventListener("keydown", function(evt){
+			keyPress[evt.keyCode] = true;
+		})
+		document.addEventListener("keyup", function(evt){
+			delete keyPress[evt.keyCode];
+		})
+		init();
+		var loop = function(){
+			update();
+			draw();
+			window.requestAnimationFrame(loop,canvas);
+		};
+
+		window.requestAnimationFrame(loop,canvas);
+	}
+	var init = function(){
+		player.x = player.width;
+		player.y = (Height - player.height)/2;
+		
+		ai.x = Width - (player.width + ai.width);
+		ai.y = (Height - ai.height)/2;
+		
+		ball.x = (Width - ball.side)/2;
+		ball.y = (Height - ball.side)/2;
+
+		ball.vel = {
+			x: ball.speed,
+			y: 0
+		}
+	}
+	var update = function(){
+		player.update();
+		ai.update();
+		ball.update();
+		gameSet.update();
+	}
+	var draw = function(){
+		ctx.fillStyle = "MediumSpringGreen";
+		ctx.fillRect(0 , 0 , Width , Height);
+		
+		ctx.save();
+		
+		player.draw();
+		ai.draw();
+		ball.draw();
+
+		var w = 4;
+		var x = (Width - w)/2;
+		var y = 0;
+		var step = Height/20
+		while(y < Height){
+			ctx.fillStyle = "White";
+			ctx.fillRect(x , y , w , step/2)
+			y += step;
+		}
+		gameSet.draw();
+		ctx.restore();
+	}
+	main();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="C:\Users\kyanh\Desktop\Java Assignments\ColorDetector">
+  <deploy height="800" placeholderref="myApplet" placeholderid="myApplet" width="500">
+    <application name="ColorDetector" mainclass="Init" version="11"/>
+    <info title="ColorGame"/>
+  </deploy>
+  <signjar/>
+</anttasks:AntTask>
