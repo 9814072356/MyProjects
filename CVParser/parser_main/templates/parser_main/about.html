@@ -1,0 +1,36 @@
+{% extends 'navigation.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+{% endblock css %}
+{% block content %}
+    <div class="container">
+        <div class="center">
+            <div> {% translate "Tutorial Video:" %}
+                <div>
+                    <iframe width="560" height="315" src="https://www.youtube.com//embed/hHfPPrX8fqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block script %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js" integrity="sha256-SrBfGi+Zp2LhAvy9M1bWOCXztRU9Ztztxmu5BcYPcPE=" crossorigin="anonymous"></script>
+
+ <!-- <script>
+$(document).ready(function(){
+
+  // Initialize materialize data picker
+  $('.datepicker').datepicker({'format': 'yyyy-mm-dd'});
+  $('select').formSelect();
+
+});
+</script> -->
+{% endblock script %}

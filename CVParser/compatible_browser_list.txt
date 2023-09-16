@@ -1,0 +1,11 @@
+Tested with normal and not normal parser.
+works with:
+-Chrome
+-Edge
+-Opera
+-Safari
+-Iridium (chromium)
+
+
+doesn't work:
+-Firefox

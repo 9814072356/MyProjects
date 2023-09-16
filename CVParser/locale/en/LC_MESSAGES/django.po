@@ -1,0 +1,341 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-17 10:17+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\CVParser1\settings.py:132
+msgid "English"
+msgstr ""
+
+#: .\CVParser1\settings.py:133
+msgid "German"
+msgstr ""
+
+#: .\parser_main\forms.py:125 .\parser_main\forms.py:126
+msgid "Year"
+msgstr ""
+
+#: .\parser_main\models.py:26
+msgid "First name"
+msgstr ""
+
+#: .\parser_main\models.py:27
+msgid "Last name"
+msgstr ""
+
+#: .\parser_main\models.py:28
+msgid "City"
+msgstr ""
+
+#: .\parser_main\models.py:29
+msgid "State"
+msgstr ""
+
+#: .\parser_main\models.py:30
+msgid "Country"
+msgstr ""
+
+#: .\parser_main\models.py:31
+msgid "Photo"
+msgstr ""
+
+#: .\parser_main\models.py:32
+msgid "Company"
+msgstr ""
+
+#: .\parser_main\models.py:33 .\parser_main\models.py:71
+msgid "Job"
+msgstr ""
+
+#: .\parser_main\models.py:47
+msgid "Education"
+msgstr ""
+
+#: .\parser_main\models.py:57
+msgid "Skill"
+msgstr ""
+
+#: .\parser_main\models.py:67
+msgid "from"
+msgstr ""
+
+#: .\parser_main\models.py:68
+msgid "till"
+msgstr ""
+
+#: .\parser_main\models.py:69
+msgid "Employer"
+msgstr ""
+
+#: .\parser_main\models.py:70
+msgid "Description"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:17
+msgid "CVParser"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:27
+msgid "Account"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:37
+msgid "Tool"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:40
+msgid "Edit"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:43
+msgid "About"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:46
+msgid "Tutorial"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:49
+msgid "Language"
+msgstr ""
+
+#: .\parser_main\templates\navigation.html:67
+msgid "Log out"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\about.html:11
+msgid "Tutorial Video:"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\account.html:11
+msgid "Account Infos:"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\alert.html:66
+msgid "Password reset successfully"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\confirm.html:35
+msgid "Link created"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\confirm.html:48
+msgid "Close"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\edit.html:31
+msgid "Basic Information"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\edit.html:42
+msgid "Education Information"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\edit.html:51
+#: .\parser_main\templates\parser_main\edit.html:71
+#: .\parser_main\templates\parser_main\edit.html:91
+msgid "Add"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\edit.html:62
+msgid "Experience Information"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\edit.html:82
+msgid "Skill Information"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\edit.html:98
+msgid "Save"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\edit.html:99
+msgid "Export"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\extractor.html:25
+msgid "Extract"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\extractor.html:26
+msgid "Clear"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\reset_password.html:35
+msgid "Cancel"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\simpleForm.html:46
+msgid "CREATE ACCOUNT"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\simpleForm.html:46
+msgid "RESET PASSWORD"
+msgstr ""
+
+#: .\parser_main\templates\parser_main\simpleForm.html:49
+msgid "Submit"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:24
+msgid "Basic Information:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:26
+msgid "Name:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:27
+msgid "City:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:28
+msgid "State:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:29
+msgid "Country:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:30
+msgid "Company:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:31
+msgid "Title:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:32
+msgid "About:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:35
+msgid "Education:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:43
+msgid "Experience:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:47
+msgid "Job:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:48
+msgid "from:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:49
+msgid "till:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:50
+msgid "Employer:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:51
+msgid "Description:"
+msgstr ""
+
+#: .\parser_main\templates\pdf.html:58
+msgid "Skill:"
+msgstr ""
+
+#: .\parser_main\views.py:61
+#, python-brace-format
+msgid "Code sent to {mail}"
+msgstr ""
+
+#: .\parser_main\views.py:62
+msgid "Please do not refresh this page. Your entries will be lost on refresh."
+msgstr ""
+
+#: .\parser_main\views.py:64 .\parser_main\views.py:72
+#: .\parser_main\views.py:102
+msgid "CREATE USER"
+msgstr ""
+
+#: .\parser_main\views.py:70
+msgid ""
+"Please enter your email address to proceed. For certainty please use gmail."
+msgstr ""
+
+#: .\parser_main\views.py:90
+msgid "New user created successfully."
+msgstr ""
+
+#: .\parser_main\views.py:93
+msgid "Invalid code."
+msgstr ""
+
+#: .\parser_main\views.py:97 .\parser_main\views.py:129
+msgid "You are already logged in."
+msgstr ""
+
+#: .\parser_main\views.py:123
+msgid "You are now logged in as "
+msgstr ""
+
+#: .\parser_main\views.py:126 .\parser_main\views.py:132
+msgid "LOGIN"
+msgstr ""
+
+#: .\parser_main\views.py:173
+msgid "Profile was updated successfully"
+msgstr ""
+
+#: .\parser_main\views.py:179
+msgid "Education was updated successfully"
+msgstr ""
+
+#: .\parser_main\views.py:187
+msgid "Experience was updated successfully"
+msgstr ""
+
+#: .\parser_main\views.py:195
+msgid "Skills updated successfully"
+msgstr ""
+
+#: .\parser_main\views.py:257
+msgid "We had some errors <pre>"
+msgstr ""
+
+#: .\parser_main\views.py:260
+msgid "Unable to export profile"
+msgstr ""
+
+#: .\parser_main\views.py:299
+#, python-brace-format
+msgid "Reset link was sent to {mail}"
+msgstr ""
+
+#: .\parser_main\views.py:303
+msgid "Account does not exist"
+msgstr ""
+
+#: .\parser_main\views.py:307
+msgid "Please enter your email to verify"
+msgstr ""
+
+#: .\simpleUser\models.py:31
+msgid "email address"
+msgstr ""
+
+#: .\simpleUser\models.py:58
+msgid "User"
+msgstr ""

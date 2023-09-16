@@ -1,0 +1,15 @@
+{% extends 'register/base.html' %}
+
+
+
+{% block content %} 
+    <div style="padding-left: 40%; padding-right: 40%;">
+        <h1>Einloggen</h1>
+        <form method = "POST" class="form-group" ></form>
+            {% csrf_token %}
+            {{ form}}
+            <p>Noch kein Account? Dann <a href="/register">hier erstellen</a> </p>
+            <button type="submit" class="btn btn-primary">Einloggen</button>
+        </form>
+    </div>
+{% endblock %}

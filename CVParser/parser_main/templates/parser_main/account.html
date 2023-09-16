@@ -1,0 +1,65 @@
+{% extends 'navigation.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <style type="text/css">
+        .layout{
+            /*margin: auto;*/
+            background-color: rgba(230, 230, 250,.6);
+            box-shadow: 0 0 60px 100px rgba(230, 230, 250,.6);
+            /*display: flex;*/
+            column-gap: 15px;
+            width: 60%;
+        }
+        #set {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+            background-color: #083248;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 25px;
+            flex-grow: 1;
+            /*width: 50%;*/
+            /*height: 30%;*/
+            font-family: 'Arial';
+            /*opacity: 0.9;*/
+            transition: 0.3s;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #set:hover {background-color: #90b7dd;}
+    </style>
+{% endblock css %}
+
+{% block script %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js" integrity="sha256-SrBfGi+Zp2LhAvy9M1bWOCXztRU9Ztztxmu5BcYPcPE=" crossorigin="anonymous"></script>
+{% load crispy_forms_tags %}
+<div class="layout">
+  <form action="{{ post_url }}" method="post">
+    <div class="txt_field">
+      {% csrf_token %}
+      {{ form|crispy }}
+    </div>
+    <div class="btn" ><input id="set" type="submit" value="{% translate 'Set' %}"></div>
+  </form> 
+</div>
+
+ <!-- <script>
+$(document).ready(function(){
+
+  // Initialize materialize data picker
+  $('.datepicker').datepicker({'format': 'yyyy-mm-dd'});
+  $('select').formSelect();
+
+});
+</script> -->
+{% endblock script %}

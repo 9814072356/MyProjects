@@ -1,0 +1,62 @@
+details summary {
+	cursor: pointer;
+}
+
+details summary > * {
+	display: inline;
+}
+
+.asteriskField {
+    display: none;
+}
+
+#tut{
+	color: #1E90FF;
+}
+#tut:hover {color: #00BFFF;cursor: pointer;}
+.layout{
+  margin: auto;
+  background-color: rgba(230, 230, 250,.6);
+  box-shadow: 0 0 60px 100px rgba(230, 230, 250,.6);
+  width: 90%;
+  margin-bottom: 100px;
+}
+#saveBTN {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: #083248;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 25px;
+	flex-grow: 1;
+	/*width: 50%;*/
+	/*height: 30%;*/
+	font-family: 'Arial';
+	/*opacity: 0.9;*/
+	transition: 0.3s;
+	cursor: pointer;
+	border-radius: 5px;
+}
+#saveBTN:hover {background-color: #90b7dd;}
+
+#exportBtn {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: #800000;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 25px;
+	flex-grow: 1;
+	/*width: 50%;*/
+	/*height: 30%;*/
+	font-family: 'Arial';
+	/*opacity: 0.9;*/
+	transition: 0.3s;
+	cursor: pointer;
+	border-radius: 5px;
+}
+#exportBtn:hover {background-color: #90b7dd;}

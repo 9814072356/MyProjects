@@ -1,0 +1,17 @@
+INSTALLATION GUIDE (For window 10)
+
+1. Introduction
+ In this installation guide will show how to install and deploy project CVParser on server.
+
+2. Requirement
+ - Docker installed on Server
+
+3. Installing the software
+- Step 1: Upload folder that contain project CVParser to server
+- Step 2: Open directory that container Dockerfile
+- Step 3: Download mysql image from dockerhub ( Command : docker pull mysql/mysql-server:latest)
+- Step 4: Create docker network (Command : docker network create name-of-network)
+- Step 5: Run container for database with that downloaded Mysql image on network that created before and name it as db( Command: docker run -d --network name-of-network --network-alias mysql --name db -p 3360:3360 -v db:/var/lib/mysql -e MYSQL_USER=cvparser -e MYSQL_PASSWORD=cvparser -e MYSQL_DATABASE=UserProfil -e MYSQL_ROOT_PASSWORD=rootpassword mysql/mysql-server:latest )
+- Step 6: Build image for our application (Command : docker build --tag name-of-image .)
+- Step 7: Run container for application on the same network with database (Command: docker run -it --network name-of-network -p 8000:8000 -v "$(pwd):/django" name-of-image)
+- Step 8: After Step 7 database will be automatically migrate and application will be automatically deployed. Now you can access to application through web browser

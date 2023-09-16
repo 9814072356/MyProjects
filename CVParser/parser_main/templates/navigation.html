@@ -1,0 +1,272 @@
+<!--internationalization-->
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+<!--    bootstrap tourist-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-tourist@0.3.2/bootstrap-tourist.css" integrity="sha256-KfqYziO55dL+ztqRAWoRnEjNq7bbH1iOMf06BggXbxU=" crossorigin="anonymous">
+
+    <title>{% translate "CVParser"%}
+  </title>
+        </head>
+    <body>
+    {% block css %}{% endblock css %}
+        
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+      
+              <a class="navbar-brand" href="{% url 'parser_main:account' %}">{% translate "Account" %}</a>
+      
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'parser_main:extractor' %}" id="tool_page">{% translate "Tool" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'parser_main:edit' %}" id="edit_page">{% translate "Edit" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'parser_main:about' %}" id="about_page">{% translate "About" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a id="tut" class="nav-link" onclick="tutorial_restart();" >{% translate "Tutorial" %}</a>
+                </li>
+                <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"> {% translate "Language" %}</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                  <ul class="languages">
+                                    {% for language in languages %}
+                                      <li>
+                                        <a class="dropdown-item" href="/{{ language.code }}/{{request.get_full_path|slice:'4:'}}"
+                                          {% if language.code == LANGUAGE_CODE %} class="selected"{% endif %}>
+                                          {{ language.name_local }}
+                                        </a>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                            </ul>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-danger" onclick="location.href='{% url 'logout' %}'" id="logout">{% translate "Log out" %}</button>
+            </div>
+            </div>
+      </nav>
+
+    {% block content %}{% endblock %}
+    
+    {% block script %}{% endblock %}
+    </body>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+<!--        bootstrap tourist-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-tourist@0.3.2/bootstrap-tourist.js" integrity="sha256-PT3+p0dmmI4saS9oSxkQ7AyKIWZjiVbT+acg37PEJpI=" crossorigin="anonymous"></script>
+
+    <script>
+        //this function restarts the tutorial if the tutorial button is clicked, depending which language was choosen
+        function tutorial_restart(){
+            lang = this.get_language();
+            if(lang == "de"){
+                tour_de.restart();
+            }else if(lang == "en"){
+                tour_en.restart();
+            }else{
+                console.log("you failed")
+            }
+        }
+        //this function starts the tutorial if the tutorial_state of the browser cache is not finished, depending which language was choosen
+        function tutorial_start(){
+            lang = this.get_language();
+            if(lang == "de"){
+                tour_de.start();
+            }else if(lang == "en"){
+                tour_en.start();
+            }else{
+                console.log("you failed")
+            }
+        }
+        //  getter for the language by splitting the url
+        function get_language() {
+            var lang = window.location.pathname;
+            lang = lang.split('/');
+            lang = lang[1];
+            return lang;
+        }
+        // Tutorial tour in german
+        var tour_de = new Tour({
+                    name: 'tourist',
+                    steps: [
+                        {
+                            path: "/de/extractor",
+                            element: "#tool_page",
+                            title: "1.Schritt",
+                            content: "Du bist auf der Tool Seite von CV-Parser, um dein Profil zu extrahieren, Folge diesem Tutorial"
+                        },
+                        {
+                            path: "/de/extractor",
+                            element: "#cke",
+                            title: "2.Schritt",
+                            content: "Gehe in einem neuen Tab auf dein LinkedIn Profil und scrolle nach unten bis zum Ende der Seite. Bitte öffne dabei alle 'mehr Anzeigen' Optionen. Anschließend drücke STRG + a und STRG + c."
+                        },
+                        {
+                            path: "/de/extractor",
+                            element: "#cke",
+                            title: "3.Schritt",
+                            content: "Klicke auf das Textfeld und drücke STRG + v um dein Profil hier einzufügen"
+                        },
+                        {
+                            path: "/de/extractor",
+                            element: "#submit",
+                            title: "4.Schritt",
+                            content: "klicke auf den Extract Button um dein Profil zu extrahieren"
+                        },
+                        {
+                            path: "/de/extractor",
+                            element: "#submit",
+                            title: "5.Schritt",
+                            content: "Klicke auf den Upload Button um dein Profil an die Datenbank zu senden"
+                        },
+                        {
+                            path: "/de/extractor",
+                            element: "#txt",
+                            title: "6.Schritt",
+                            content: "Prüfe nun ob dein Profil korrekt übernommen wurde. Falls dies nicht der Fall ist, so kannst du dies in 'Edit' bearbeiten.",
+                            placement: "left"
+                        },
+                        {
+                            path: "/de/extractor",
+                            element: "#edit_page",
+                            title: "7.Schritt",
+                            content: "Wenn du dein Profil weiter bearbeiten möchtest, gehe nun auf die Edit-Page. Das Tutorial zum extrahieren deines Profils ist nun abgeschlossen."
+                        },
+                        {
+                            path: "/de/edit",
+                            element: "#edit_page",
+                            title: "1.Schritt",
+                            content: "Auf dieser Seite kannst du die Angaben in deinem Profil ändern. Klicke dazu einfach auf ein Textfeld und ändere den Inhalt.",
+                        },
+                        {
+                            path: "/de/edit",
+                            element: "#saveBTN",
+                            title: "2.Schritt",
+                            content: "Wenn du deine Änderungen eingetragen hast, klicke auf Save um die Daten in der Datenbank zu speichern.",
+                        },
+                        {
+                            path: "/de/edit",
+                            element: "#exportBtn",
+                            title: "3.Schritt",
+                            content: "Wenn du die Daten deines Profils als Pdf exportieren möchtest, klicke auf diesen Button.",
+
+                        },
+                        {
+                            path: "/de/edit",
+                            element: "#logout",
+                            title: "4.Schritt",
+                            content: "Das Tutorial ist nun abgeschlossen",
+                            placement: "left",
+                        },
+                    ],
+                    framework: 'bootstrap4',
+                    debug: true,
+                });
+        // Tutorial tour in english
+        var tour_en = new Tour({
+                name: 'tourist',
+                steps: [
+                    {
+                        path: "/en/extractor",
+                        element: "#tool_page",
+                        title: "1.Step",
+                        content: "You are on the tool_page of CV-Parser. If you want to learn how to extract and uploud your LinkedIn profile, please follow this tutorial."
+                    },
+                    {
+                        path: "/en/extractor",
+                        element: "#cke",
+                        title: "2.Step",
+                        content: "Open your LinkedIn profile in a new tab or window. Please scroll down to the end of your profile page and make sure to open all 'show more' options. Then press CTRL + a to mark everything and CTRL + c to copy."
+                    },
+                    {
+                        path: "/en/extractor",
+                        element: "#cke",
+                        title: "3.Step",
+                        content: "Click on the textfield and press CTRL + v to paste your profile into the tool."
+                    },
+                    {
+                        path: "/en/extractor",
+                        element: "#submit",
+                        title: "4.Step",
+                        content: "Click the 'extract' button to extract your profile."
+                    },
+                    {
+                        path: "/en/extractor",
+                        element: "#submit",
+                        title: "5.Step",
+                        content: "Click the 'upload' button to upload your profile to the database"
+                    },
+                    {
+                        path: "/en/extractor",
+                        element: "#txt",
+                        title: "6.Step",
+                        content: "Here you can see your added profile.",
+                        placement: "left"
+                    },
+                    {
+                        path: "/en/extractor",
+                        element: "#edit_page",
+                        title: "7.Step",
+                        content: "You finished this Tutorial. If you want to make changes on your profile, click 'edit'."
+                    },
+                    {
+                        path: "/en/edit",
+                        element: "#edit_page",
+                        title: "1.Step",
+                        content: "Here you can make changes on your profile. Just click on the textfields and type in your changes."
+                    },
+                    {
+                        path: "/en/edit",
+                        element: "#saveBTN",
+                        title: "2.Step",
+                        content: "After your done with your changes, you have to click 'Save' to apply the changes in the database.",
+                    },
+                    {
+                        path: "/en/edit",
+                        element: "#exportBtn",
+                        title: "3.Step",
+                        content: "If you want to have a copy of your information, you can export and download them by clicking 'export'.",
+
+                    },
+                    {
+                        path: "/en/edit",
+                        element: "#logout",
+                        title: "4.Step",
+                        content: "You finished this tutorial.",
+                        placement: "left"
+
+                    },
+                ],
+                framework: 'bootstrap4',
+                debug: true,
+            });
+        this.tutorial_start();
+
+    </script>
+</html>

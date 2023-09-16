@@ -1,0 +1,65 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        .back{
+            background-color: #F5F5F5;
+            text-align: right;
+        }
+        h1{
+            color: #4169E1;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+        <div class="back">
+            <img src={{Profile.image.path}} height="300px" width="300px">
+        </div>
+        <br>
+        <br>
+        <br>
+        <h1>{% translate "Basic Information:" %}</h1>
+        <hr>
+        <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;{% translate "Name:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Profile}}</p></font>
+        <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;{% translate "City:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Profile.city}}</p></font>
+        <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;{% translate "State:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Profile.state}}</p></font>
+        <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;{% translate "Country:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Profile.country}}</p></font>
+        <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;{% translate "Company:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;{{Profile.company}}</p></font>
+        <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;{% translate "Title:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Profile.jobTitle}}</p></font>
+        <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;{% translate "About:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Profile.info}}</p></font>
+        <br>
+        <br>
+        <h1>{% translate "Education:" %}</h1>
+        <hr>
+        {% for edu in Eduset %}
+            <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;</em>{{edu.name}}</p></font>
+            
+        {% endfor %}
+        <br>
+        <br>
+        <h1>{% translate "Experience:" %} </h1>
+        <hr>
+        {% for exp in Expset %}
+            <ul>
+                <li><font face="arial" size="15px"><p><em>{% translate "Job:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{exp.job_title}}</p></font></li>
+                <li><font face="arial" size="15px"><p><em>{% translate "from:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{exp.start_date}}</p></font></li>
+                <li><font face="arial" size="15px"><p><em>{% translate "till:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{exp.end_date}}</p></font></li>
+                <li><font face="arial" size="15px"><p><em>{% translate "Employer:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{exp.employer_name}}</p></font></li>
+                <li><font face="arial" size="15px"><p><em>{% translate "Description:" %}</em>&nbsp;&nbsp;&nbsp;&nbsp;{{exp.description}}</p></font></li>
+                <br>
+                <br>
+            </ul>     
+        {% endfor %}
+        <br>
+        <br>
+        <h1>{% translate "Skill:" %} </h1>
+        <hr>
+        {% for skill in Skillset %}
+            <font face="arial" size="15px"><p><em>&nbsp;&nbsp;&nbsp;&nbsp;</em>{{skill.name}}</p></font>
+        {% endfor %}
+        <br></br>
+</body>
+</html>

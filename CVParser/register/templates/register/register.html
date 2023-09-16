@@ -1,0 +1,14 @@
+{% extends 'register/base.html' %}
+
+
+{% block content %} 
+<div style="padding-left: 40%; padding-right: 40%;">
+    <h1>Registrieren</h1>
+        <form method = "POST" class="form-group" action="{% url 'register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn btn-primary">Registrieren </button>
+        </form>
+</div>
+{% endblock %}

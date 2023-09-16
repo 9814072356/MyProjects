@@ -1,0 +1,267 @@
+{% extends 'navigation.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+{% endblock css %}
+
+{% block content %}
+        <div class="container">
+            <div class="center">
+                <div class="layout" id="basic_info">
+                {% if messages %}
+                    <div class="mb-3"></div>
+                {% endif %}
+
+                <ul id="message_list" style="list-style-type: none;padding-left: 0;">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <form action="{{ post_url }}" enctype="multipart/form-data" method="post" id="id_form">
+                    {% load crispy_forms_tags %}
+                    {% csrf_token %}
+                    <input type="hidden" name="delete_only" id="id_delete_only" value="false">
+                    <div class="form">
+                        <h3><strong>{% translate "Basic Information" %}</strong></h3>
+                        {% crispy form %}
+                    </div>
+                    <div class="accordion" id="id_accordion">
+                        <div class="accordion-item card">
+                            <div class="card-header">
+                                <h3 class="accordion-header mb-0" id="accordion-1-header">
+                                    <button class="accordion-button btn btn-link btn-block text-left{% if not edu_open %} collapsed{% endif %}" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#accordion-1-collapse" aria-controls="accordion-1-collapse"
+                                        aria-expanded="{% if edu_open %}true{% else %}false{% endif %}"
+                                        data-toggle="collapse" data-target="#accordion-1-collapse">
+                                        {% translate "Education Information" %}
+                                    </button>
+                                </h3>
+                            </div>
+                            <div class="accordion-collapse collapse{% if edu_open %} show{% endif %}"
+                                id="accordion-1-collapse" aria-labelledby="accordion-1-header" data-parent="#id_accordion">
+                                <div class="accordion-body card-body">
+                                    {% crispy eduset %}
+
+                                    <button class="btn btn-secondary" type="button" id="button_education" onclick="addForm('education')">{% translate "Add" %}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item card">
+                            <div class="card-header">
+                                <h3 class="accordion-header mb-0" id="accordion-2-header">
+                                    <button class="accordion-button btn btn-link btn-block text-left{% if not exp_open %} collapsed{% endif %}" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordion-2-collapse" aria-controls="accordion-2-collapse"
+                                    aria-expanded="{% if exp_open %}true{% else %}false{% endif %}"
+                                    data-toggle="collapse" data-target="#accordion-2-collapse">
+                                    {% translate "Experience Information" %}
+                                </button>
+                            </h3>
+                            </div>
+                            <div class="accordion-collapse collapse{% if exp_open %} show{% endif %}"
+                                id="accordion-2-collapse" aria-labelledby="accordion-2-header">
+                                <div class="accordion-body card-body">
+                                    {% crispy expset %}
+
+                                    <button class="btn btn-secondary" type="button" id="button_experience" onclick="addForm('experience')">{% translate "Add" %}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item card">
+                            <div class="card-header">
+                                <h3 class="accordion-header mb-0" id="accordion-3-header">
+                                    <button class="accordion-button btn btn-link btn-block text-left{% if not skill_open %} collapsed{% endif %}" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#accordion-3-collapse" aria-controls="accordion-3-collapse"
+                                    aria-expanded="{% if skill_open %}true{% else %}false{% endif %}"
+                                    data-toggle="collapse" data-target="#accordion-3-collapse">
+                                    {% translate "Skill Information" %}
+                                </button>
+                            </h3>
+                            </div>
+                            <div class="accordion-collapse collapse{% if skill_open %} show{% endif %}"
+                                id="accordion-3-collapse" aria-labelledby="accordion-3-header">
+                                <div class="accordion-body card-body">
+                                    {% crispy skillset %}
+
+                                    <button class="btn btn-secondary" type="button" id="button_skill" onclick="addForm('skill')">{% translate "Add" %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3"></div>
+                    <div class="form-actions">
+                        <input id="saveBTN" type="submit" value="{% translate 'Save' %}" >
+                        <a href="{% url 'parser_main:export'  %}"><button id="exportBtn" type="button" >{% translate "Export" %}</button></a>
+                    </div>
+                </form>
+                <iframe id="id_iframe" name="name_iframe" hidden></iframe>
+
+                <div id="empty_education" hidden>
+                    {% crispy eduset.empty_form eduset.helper %}
+                </div>
+
+                <div id="empty_experience" hidden>
+                    {% crispy expset.empty_form expset.helper %}
+                </div>
+
+                <div id="empty_skill" hidden>
+                    {% crispy skillset.empty_form skillset.helper %}
+                </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+{% block script %}
+<script>
+    /**
+     * Adds a new empty form to the formset specified by type.
+     * 
+     * @param type The type should only be "education", "experience" or "skill".
+     */
+    function addForm(type)
+    {
+        // The hidden number of total forms must be changed
+        var totalForms = document.getElementById("id_" + type + "_set-TOTAL_FORMS");
+
+        // Get the hidden empty form
+        var empty_form = document.getElementById("empty_" + type);
+        // Copy the div inside of the div
+        var new_form = empty_form.children[0].cloneNode(true);
+
+        // Replace all "__prefix__" attributes with the right number of the new form
+        renumberDiv(new_form, totalForms.value);
+
+        // Display the new form in the right position before the Add-button
+        var add_button = document.getElementById("button_" + type);
+        add_button.parentElement.insertBefore(new_form, add_button);
+        new_form.hidden = false;
+
+        // Set event for DELETE button
+        var form_id = "id_" + type + "_set-" + totalForms.value;
+        let id_field = document.getElementById(form_id + "-id");
+
+        var delete_button = document.getElementById(form_id + "-DELETEBUTTON");
+        delete_button.addEventListener("click", (event) => deleteForm(id_field));
+
+        // Increase number of total forms
+        totalForms.value = Number(totalForms.value) + 1;
+    }
+
+    /**
+     * Removes a form from one of the formsets.
+     * 
+     * @param id_field The hidden input containing the form's object id.
+     */
+    function deleteForm(id_field)
+    {
+        var id_field_id = id_field.id;
+        
+        // Get the id prefix for the formset and the index of the form in it.
+        var dash_index = id_field_id.indexOf("-") + 1;
+        var field_index = id_field_id.indexOf("-", dash_index);
+        var form_index = Number(id_field_id.substring(dash_index, field_index));
+        var set_id = id_field_id.substring(0, dash_index);
+        var totalForms = document.getElementById(set_id + "TOTAL_FORMS");
+
+        // The parent of the id_field will be the div around the form.
+        var form_div = id_field.parentElement;
+
+        if (id_field.hasAttribute("value")) // else the form must only be deleted locally
+        {
+            form_div.hidden = true;
+
+            // Set the forms DELETE field value
+            var delete_input = document.getElementById(id_field_id.substring(0, field_index) + "-DELETE");
+            delete_input.value = "on";
+            delete_input.disabled = false;
+
+            // If the form has an id, the object in the database must be deleted.
+            var html_form = document.getElementById("id_form");
+            var delete_only = document.getElementById("id_delete_only");
+
+            // delete_only tells the server to only delete objects
+            delete_only.value = "true";
+            html_form.setAttribute("target", "name_iframe");
+            
+            html_form.submit();
+            
+            html_form.removeAttribute("target");
+            delete_only.value = "false";
+
+            // Decrease number of INITIAL forms (forms that are saved in database)
+            var initial_forms = document.getElementById(set_id + "INITIAL_FORMS");
+            initial_forms.value = Number(initial_forms.value) - 1;
+        }
+
+        form_div.remove();
+
+        // All following form indexes must be decremented
+        for (var i = form_index + 1; i < Number(totalForms.value); i++)
+        {
+            var id_field = document.getElementById(set_id + i + "-id");
+            renumberDiv(id_field.parentElement, i - 1);
+        }
+
+        // Decrease the number of total forms
+        totalForms.value = Number(totalForms.value) - 1;
+    }
+
+    function renumberDiv(element, value)
+    {
+        for (var child of element.children)
+        {
+            if (child.hasAttribute("id"))
+                child.id = renumberString(child.id, value);
+            
+            if (child.hasAttribute("name"))
+                child.name = renumberString(child.name, value);
+
+            if (child.hasAttribute("for"))
+                child.setAttribute("for", renumberString(child.getAttribute("for"), value));
+
+            if (child.tagName === "DIV" || child.tagName === "SPAN")
+                renumberDiv(child, value);
+        }
+    }
+
+    function renumberString(string, value)
+    {
+        // The number is between "_set-" and "-"
+        var set_index = string.indexOf("_set-");
+        var dash_index = string.indexOf("-", set_index + 5);
+
+        // Both must be present to change the number
+        if (set_index > 0 && dash_index > 0)
+        {
+            return string.substring(0, set_index + 5) + value + string.substring(dash_index);
+        }
+        // Else change nothing
+        return string;
+    }
+
+    function setDeleteEvents(id_set_with_dash)
+    {
+        var count = Number(document.getElementById(id_set_with_dash + "TOTAL_FORMS").value);
+
+        for (var i = 0; i < count; i++)
+        {
+            var input = document.getElementById(id_set_with_dash + i + "-DELETEBUTTON");
+            let index = i;
+            let id_field = document.getElementById(id_set_with_dash + index + "-id");
+            input.addEventListener("click", (event) => deleteForm(id_field));
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event)
+    {
+        setDeleteEvents("id_education_set-");
+        setDeleteEvents("id_experience_set-");
+        setDeleteEvents("id_skill_set-");
+    });
+</script>
+{% endblock script %}
