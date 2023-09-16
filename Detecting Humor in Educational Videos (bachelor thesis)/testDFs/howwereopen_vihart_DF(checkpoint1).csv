@@ -1,0 +1,183 @@
+text,humor,pred,result,good,bad,accuracy,precision,recall,F1
+" So you might see something I've been working on in the news this week, a road map to pandemic resilience.",False,False,good,110.0,16.0,0.873015873015873,0.0,0.0,0.0
+"And this is a four-real thing that represents a consensus of people with every political belief and expertise, like 
+Republicans and Democrats and libertarians, economists and health officials and ethics and civil liberties folks, 
+and at least one mathematician, all agreeing.",False,False,good,,,,,,
+So there's a few ways we could respond to this pandemic.,False,False,good,,,,,,
+"In the US, we already closed down a lot of stuff for a while, and it's hard.",False,False,good,,,,,,
+"But now it looks like the curve is starting to flatten, and we know it's going to keep falling in the near term, and 
+all of us want to get back to our lives.",False,False,good,,,,,,
+We don't know exactly what this side of the curve will look like.,False,False,good,,,,,,
+"You've probably seen versions that are optimistically symmetric, but unrealistic.",False,False,good,,,,,,
+"It'll probably look less like this, and more like this, which I modeled off of Spain.",False,True,bad,,,,,,
+"Okay, so say we reopen soon, and whoops, that's not ideal.",False,True,bad,,,,,,
+"Okay, say less affected areas can reopen.",False,False,good,,,,,,
+"New York is still closed, and then some of us at least get a month of freedom and economic activity before we 
+have to reshut down and do it all again.",False,False,good,,,,,,
+"And again, it would be a reopening roller coaster, and it would at least spread out the cases, but this plan has 
+a lot of unknowns.",False,False,good,,,,,,
+"It wouldn't be back to business as usual when things are open, because businesses won't be able to rely on each 
+other to stay open or on their workers to not all fall sick at once.",False,False,good,,,,,,
+Anywhere could be the next hotspot.,False,False,good,,,,,,
+It makes it hard to plan and hard to feel safe.,False,False,good,,,,,,
+So here's another way to respond.,False,True,bad,,,,,,
+"The plan that all these folks agree on is to reopen the economy this summer in four phases, so that the curve 
+keeps falling, and we can stay open while protecting your health and civil liberties.",False,False,good,,,,,,
+There's three things we need to do this.,False,False,good,,,,,,
+Number one is testing.,False,False,good,,,,,,
+"We simply need more tests, a lot more, like millions a day, and these tests will be fast.",False,False,good,,,,,,
+No one wants to wait days for their results.,False,False,good,,,,,,
+Number two is tracing.,False,False,good,,,,,,
+"Contact tracing is how we let you know if there's a chance you've been exposed, so you can get a test and find 
+out fast whether you should isolate to stop it from spreading further.",False,False,good,,,,,,
+And number three is supported isolation.,False,False,good,,,,,,
+"Anyone who tests positive or is waiting for their results needs support isolate at home with health care supplies 
+and job protections.",False,False,good,,,,,,
+So testing tracing supported isolation.,False,False,good,,,,,,
+"It's possible, but it takes resources.",False,False,good,,,,,,
+So we made our plan as epic as we needed to be to get this done responsibly this summer.,False,False,good,,,,,,
+"Okay, so first is phase one.",False,False,good,,,,,,
+Here's where we see the curve flatten and fall by giving our essential workers the support and care they need.,False,False,good,,,,,,
+40% of the economy is already open.,False,False,good,,,,,,
+"Thanks to essential workers like nurses, grocery store workers, utilities maintenance workers, police and 
+firefighters, restaurant and delivery workers.",False,False,good,,,,,,
+"They didn't ask to be put on the front lines of this crisis, but they've stepped up to the challenges.",False,False,good,,,,,,
+"So in phase one, we grow our resources to support those essential workers and turn our current limited 
+economy into a pandemic resilient foundation.",False,False,good,,,,,,
+"We'll hear from our neighbors and friends who work in delivery and law enforcement that thanks to testing and 
+tracing, they don't have to wonder anymore if they might be spreading the disease without even knowing it.",False,False,good,,,,,,
+And they don't have to worry about co-workers having it without knowing it.,False,False,good,,,,,,
+"When someone tests positive, they get sick leave, they have other worker protection, so no one is worried 
+about getting fired for being sick if they take a test.",False,False,good,,,,,,
+"We'll hear from our elders and care facilities that now there's testing in place to make sure there's no chance for 
+this disease to spread out of control.",False,False,good,,,,,,
+"That goes for anyone in frequent contact with essential workers, including folks in jails and prisons.",False,False,good,,,,,,
+"Some folks will be going through online training to fill in for essential workers, maybe a teacher you know 
+trained to do in-home childcare to sub in for someone who's gotten ill, and maybe a neighbor who has 
+experienced caring for an elderly relative decides to take the course and is ready to fill in.",False,False,good,,,,,,
+How and where testing gets done might also depend on the community.,False,False,good,,,,,,
+"We know that the best way to prevent spread is to find out who was in contact with someone who tests 
+positive, so that those people can get tested quickly and have results within 24 hours.",False,False,good,,,,,,
+"Some communities already have networks of contact tracer that people trust to do this work in a way that 
+protects their rights.",False,False,good,,,,,,
+"While in some communities, we might hear about people working together to build these networks.",False,False,good,,,,,,
+Maybe some will use technology to help.,False,False,good,,,,,,
+"The better we are at contact tracing, the faster we can move on to phase two.",False,False,good,,,,,,
+"But worst case, we just have to make a lot more tests.",False,False,good,,,,,,
+"Because in phase one, most of us are still isolating at home, so we only need to produce enough tests to keep 
+those essential workers safe.",False,False,good,,,,,,
+"Meanwhile, we'll hear about all the innovative ways communities and companies are expanding contact tracing 
+and making it work to bring down the number of cases to where we can move to phase two.",False,False,good,,,,,,
+"In phase two, well, we've got our stable foundation of 40%.",False,False,good,,,,,,
+So now we expand essential workers to 70%.,False,False,good,,,,,,
+"Communities will be empowered to put programs in place to train and hire more people in essential jobs, 
+lightening the burden on the current essential workforce.",False,False,good,,,,,,
+We'll be able to address supply chain problems.,False,False,good,,,,,,
+You can find toilet paper in stores and order pasta online again.,False,False,good,,,,,,
+"We might see one city get more buses on the street and hire more folks to drive those buses, so that expanded 
+essential workers can get to their jobs safely without being in a crowded environment.",False,False,good,,,,,,
+"Another city without buses to spare might invest in hiring a set of workers to build out more public transit 
+infrastructure.",False,False,good,,,,,,
+"More people will get hired to serve in roles in unemployment and retraining, so more people can access support.",False,False,good,,,,,,
+A doctor who's tested positive and has to isolate might teach courses on how to do a swab test.,False,False,good,,,,,,
+"A contact tracer with 20 years experience might partner with their county to start an online training program for 
+contact tracers.",False,False,good,,,,,,
+Maybe the Bay Area leans heavily on appassisted contact tracing.,False,False,good,,,,,,
+"Maybe LA partners with an organization like Unidos, US, to work with immigrants on community run contact 
+tracing they trust.",False,False,good,,,,,,
+"In a rural county like mine, maybe we do most of our contact tracing the old fashioned way over the phone with 
+one of our local figures that everyone already knows anyway, and we can take a test at the old elementary 
+school if we need to.",False,True,bad,,,,,,
+Maybe we apply for funding to expand our tiny hospital and there's a demand for construction workers to build it out.,False,True,bad,,,,,,
+"During this phase, which will probably be most of June, we can allow a relaxation of certain social distancing 
+measures for those essential workers on the front lines.",False,False,good,,,,,,
+"We'll still have to cancel large gatherings, but the group of expanded essential workers can safely visit and support 
+each other.",False,False,good,,,,,,
+"We'll see restaurants that are currently doing takeout for the general population can be open to serve essential 
+workers on site.",False,False,good,,,,,,
+"If there's any question of exposure, there's enough tests to find out, and the health resources to respond as necessary.",False,False,good,,,,,,
+We'll see our friends and relatives in essential sectors go from stress and scared to secure and supported.,False,False,good,,,,,,
+"Before long, 70% of the population is part of a smoothly working pandemic resilient economy, and so we move on to 
+phase three.",False,False,good,,,,,,
+Phase three is short and sweet.,False,False,good,,,,,,
+"It gets our workforce back to 100%, though some of us will still be working from home.",False,False,good,,,,,,
+"It lasts just a week or two, and by the end, there will be no corona-induced unemployment.",False,False,good,,,,,,
+"Phase three is where non-essential businesses like hair and nail salons work that cannot be done remotely will 
+restart with safety precautions like public mask wearing.",False,False,good,,,,,,
+"Maybe a friend reopens his hair salon, giving priority to essential workers in his community like doctors and bus drivers.",False,True,bad,,,,,,
+"He knows they are able to get testing if there's a chance they've been exposed, so that if any of his clients do test 
+positive, he'll be informed by a contact tracer that he should get tested too in case.",False,False,good,,,,,,
+"He makes sure to only have one client in his shop at a time and take special precautions to clean down surfaces 
+between clients.",False,False,good,,,,,,
+"Office workers and mathematicians like me will still be working from home in phase three and asked not to go 
+out for just this next week or two, but now I can get a home visit from a hair colorist or a massage therapist.",False,True,bad,,,,,,
+"I'll leave the on-location visits for the workers who don't have the at-home job security I have, just until we've 
+ramped up our supplies to where we can move on to phase four.",False,False,good,,,,,,
+"Phase three also increases support for the unemployed, homeless, and underhoused.",False,False,good,,,,,,
+"This phase is probably early July, so I'll be looking to my county for guidance on whether it's safe to have a small 
+fourth of July gathering, maybe keeping our distance outside on the porch or following other recommendations.",False,True,bad,,,,,,
+"And then at the end of July, we enter phase four.",False,False,good,,,,,,
+The last 20% of workers still working from home can start going to the office again.,False,False,good,,,,,,
+"You might start going in just a few days a week after taking a test, covered by insurance, and then working from home 
+for the rest of the week while a different group of workers has in office days.",False,False,good,,,,,,
+"Some industries might face things differently, and different offices will make different decisions based on guidance 
+and resources.",False,False,good,,,,,,
+"We can plan for summer barbecues with our family and friends, because we'll have clear guidance about safety and 
+access to tests.",False,False,good,,,,,,
+"We can go to parks and go shopping, wearing a mask without fear that coronavirus is lying in weight on every surface.",False,False,good,,,,,,
+"A restaurant owner in New York where tables are usually spaced close together might have to reduce capacity, but 
+they're happy to have office workers able to dine out again.",False,True,bad,,,,,,
+"In my town, maybe most restaurants have enough space that folks can keep a safe distance at about the usual capacity.",False,False,good,,,,,,
+"Maybe our local club replaces the dance floor with safely spaced bar tables, and they hire local performers to give 
+live shows so that they can charge a cover to make up for reduced capacity.",False,True,bad,,,,,,
+"In phase four, students can go back to school.",False,False,good,,,,,,
+"Well, it's probably summer vacation for most, but some school districts might have summer classes where students 
+can get out of the house and catch up on what they missed in spring.",False,True,bad,,,,,,
+Summer sports teams might have to get creative.,False,False,good,,,,,,
+"Football, hockey, and basketball coaches will be inventing and sharing drills that have reduced contact.",False,False,good,,,,,,
+Parents might take turns attending games so that they can fill every other bleachers seat to maintain distance.,False,False,good,,,,,,
+"There's enough tests that professional sports organizations can pay to have players tested every day to identify cases 
+before they can spread meaning.",False,False,good,,,,,,
+You can expect to see televised sports again.,False,False,good,,,,,,
+"We'll have enough tests for educational institutions to be able to get additional testing support, like maybe my 
+cousins college dorm is pretty crowded so they can expect to test more frequently if they want to stay there.",False,True,bad,,,,,,
+"In phase four, life enters a comfortable new normal for the year before a vaccine, with communities receiving 
+up-to-date information on what's safe and the economy coming back into full swing.",False,False,good,,,,,,
+"Things won't be quite the same, we'll be wearing masks in public, moving large events online, and keeping a bit 
+more distance than usual.",False,False,good,,,,,,
+"But some of our investments will benefit us in the long term, like expanding our public transportation and health 
+infrastructure.",False,False,good,,,,,,
+"Our economy will be pandemic resilient, not just for this pandemic, but ready to hold strong against future attacks.",False,False,good,,,,,,
+"Throughout these four phases, we're going to see communities being empowered to find creative ways to reopen in 
+ways that are safe, legal, and supported with the healthcare infrastructure they need to do testing.",False,False,good,,,,,,
+Trace those who have been exposed care for this sick and support those who must isolate at home.,False,False,good,,,,,,
+So you might be wondering how do we get these resources available for states and local governments to use?,False,False,good,,,,,,
+"Basically, we need a pandemic testing board with strong but narrow powers to get the supply chain moving, with 
+50 to 500 billion in funding over two years, depending on how effectively we do contact tracing, plus unexpanded health reserves.",False,False,good,,,,,,
+"It's a wartime level investment that we are more than capable of, and it costs a lot less than repeatedly shutting down 
+the economy in both lives and money.",False,False,good,,,,,,
+"We've done our homework on this, so check it out along with the body of supporting work if you're interested.",False,False,good,,,,,,
+And people across disciplines and ideologies agree on this plan.,False,False,good,,,,,,
+We can do this.,False,False,good,,,,,,
+You can do this.,False,False,good,,,,,,
+"Connect with your communities, look for ways to be involved, or create them where you are.",False,False,good,,,,,,
+"This is for real, and I've never felt so encouraged and hopeful.",False,False,good,,,,,,
+"Everyone I've worked with on this project has jumped in to say, what can I do?",False,True,bad,,,,,,
+How can I help?,False,True,bad,,,,,,
+"People who disagree on everything else and who would ordinarily refuse to be in a room together are working 
+together on this.",False,False,good,,,,,,
+"In ways I would have never, ever expected possible.",False,False,good,,,,,,
+"It's kind of miraculous, and I wanted you to know, I wanted you to know it's real, that if you see it on the news with 
+some big institutional names attached, claiming all those good stuff about partnership and cooperation, I've been in 
+the room with these folks, I mean virtually in the room, but you know, and it's true.",False,False,good,,,,,,
+People are working together.,False,False,good,,,,,,
+"They are deciding together that we can do this, and we can.",False,False,good,,,,,,
+"If you're the hashtagging profile, picturing type, let me tell you hashtag how we reopen.",False,True,bad,,,,,,
+We've got icons to see the links below like pandemictesting.org.,False,False,good,,,,,,
+"Let people know, including your local leaders and elected officials, that they should take a look at this report sooner 
+rather than later.",False,False,good,,,,,,
+"I mean, we've already got a lot of momentum, but things are moving so fast with this pandemic.",False,False,good,,,,,,
+"We could use all the momentum we can get, and I'm pretty sure time isn't obeying the laws of physics right now, 
+so yeah, your help would be appreciated.",False,False,good,,,,,,
+"Okay, that's all for today.",False,True,bad,,,,,,
+"I send my best to you, and I'm looking forward to seeing the future you help create.",False,False,good,,,,,,

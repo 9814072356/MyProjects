@@ -1,0 +1,184 @@
+text,humor,pred,result,good,bad,accuracy
+" Okay, so I've been learning about Pythagoras and the dirt on him is just too good.",True,True,good,92.0,32.0,0.7419354838709677
+"You've probably heard of the Pythagorean theorem, but not the part where 
+Pythagoras was a crazy cult leader who thought he'd made a deal with the god 
+thousands of years ago and to remember all of his past lives.",True,False,bad,,,
+"Oh, and he killed a guy.",True,True,good,,,
+"I mean, maybe it was a long time ago, and he was afraid of beans as in beans.",True,True,good,,,
+"They just like, freak him out or something, I don't know.",True,True,good,,,
+But mostly you want to talk about the murdery part.,False,True,bad,,,
+"See, Pythagoras and his cult of Pythagoreans had this cool kids club where 
+they'd talk about proportioned all day.",True,True,good,,,
+"They'd be like, hey, I drew two by a rectangle using a straightage encompass, 
+isn't that awesome?",True,True,good,,,
+"And then someone would be like, hey guys, I have a box that's two by three and 
+a half, and the cool kids would be like three and a half.",True,True,good,,,
+That's not a number.,False,True,bad,,,
+"Get out of our club, and then they'd make the units half the length and call it 
+four by seven, and everything was okay.",True,True,good,,,
+"Even if your box is 2.718 by 6.28, you could just divide your units into thousands, 
+and you'd get a box that's a nice even 2718 by 6,280.",False,True,bad,,,
+"It's not a simple proportion, but hey, the box still has a whole number of 
+proportions, so Pythagoras is happy, unless it's a box of beans, then he freaks out.",True,True,good,,,
+I like to imagine what it would be like to think of numbers the way they did.,False,False,good,,,
+Maybe you think of numbers as being on a line.,False,False,good,,,
+"Numbers one way, then zero, and negative numbers the other, and there are 
+numbers between the numbers, faction, the rationals, filling in the gaps.",False,False,good,,,
+But Pythagoras didn't think about numbers like this at all.,False,False,good,,,
+They weren't points in a continuum.,False,False,good,,,
+They were each their own separate being.,False,False,good,,,
+"Which is still pretty modern, because before that people only thought of numbers 
+as adjectives.",False,True,bad,,,
+Numbers of.,False,False,good,,,
+"In Pythagoras' world, there is no number between 7 and 8, and there isn't a 
+number 3 over 2, so much as a relationship between 3 and 2, a proportion.",False,False,good,,,
+"6 to 4 has the same relationship, because the numbers share this evenness, 
+which one accounted for, makes it 3 to 2.",False,False,good,,,
+The universe to Pythagoras was made up of these relationships.,False,False,good,,,
+Mathematics wasn't numbers.,False,False,good,,,
+Mathematics was between the numbers.,False,False,good,,,
+"But while people admire how much Pythagoras loved proportions, there's a dark 
+flip side to that of session.",False,False,good,,,
+How far was he willing to go to protect the proportions he loved?,True,False,bad,,,
+Would he kill for them?,True,False,bad,,,
+Would he die for them?,True,False,bad,,,
+And the answer was he'd go pretty far until beans got involved.,True,True,good,,,
+"It's time for time, time, time, mathematicians like lines.",False,False,good,,,
+"I want the context, because in school today if you bring out the ruler and compass 
+and are like, let's do some geometry lips, draw two lines at 90 degree angles using 
+a straight edge compass.",False,True,bad,,,
+Here's a happy square.,True,False,bad,,,
+"Then you've probably had years of math class already and think of geometry as 
+being harder than adding big numbers together.",False,True,bad,,,
+You probably think that zero is a simple easy concept and have heard of decimals too.,False,False,good,,,
+"Well, here's now, 2012.",False,True,bad,,,
+"Here's Einstein, Euler, Newton, and DaVinci.",False,True,bad,,,
+That true was a while ago.,False,False,good,,,
+"Now let's go all the way back to when Arabic numerals were invented and brought 
+to the West by Fibonacci.",False,False,good,,,
+"Before that, arithmetic was nightmarishly hard, so if you can multiply multi-digit 
+numbers together, you can go back in time and impress the being that of Pythagoras.",False,False,good,,,
+"And before that, there was no concept of zero, except in India, where zero was 
+discovered around here.",False,False,good,,,
+"And if you keep going back, you get to year one.",False,False,good,,,
+"There's no year zero, of course, because zero hadn't been invented.",False,True,bad,,,
+"And back a bit more, you get to feel like Aristotle, Euclid, Archimedes, and then 
+finally Pythagoras, all the way back in 6th century BCE.",False,False,good,,,
+"Point is, you can do some pretty cool mathematics without having a good handle 
+on arithmetic.",False,False,good,,,
+And people did for a long time.,False,False,good,,,
+"And in school, when they tell you you need to memorize your multiplication table 
+and graph a parabola before you can learn real mathematics, they are lying to you.",True,True,good,,,
+"In Pythagoras's time, there were no variables, no equations or formulas like we 
+see today.",False,False,good,,,
+Pythagoras's theorem wasn't a squared plus b squared equals c squared.,False,False,good,,,
+"It was the squares of the legs of a right triangle have the same area as the square 
+of a hypotenuse.",False,False,good,,,
+"All written out, and when he said square, she meant square, one leg's square, 
+plus the other leg's square equals hypotenuse's square, three literally squared 
+plus four made into a square.",False,False,good,,,
+Those two squares have the same area as a five by five square.,False,False,good,,,
+"You can cut out the nine squares here in the 16 here and fit them together where 
+these 25 squares are.",False,False,good,,,
+"And in the same way, you can cut out the 25 hypotenuse squares and fit them 
+into the two leg squares.",False,False,good,,,
+"Pythagoras thought you could do this trick with any right triangle, that is just a 
+matter of figuring out how many pieces to cut each side into.",False,False,good,,,
+"There was a relationship between the length of one side and the length of 
+another, and he wanted to find it on this map.",False,False,good,,,
+"But the trouble began with the simplest right triangle when we're both the legs 
+are the same length when we're both leg squares are equal.",False,False,good,,,
+"If the legs are both one, then the hypotenuse is something that one squared 
+gives two.",False,False,good,,,
+"So what's the square root of two, and how do we make it into a whole number ratio?",False,False,good,,,
+"Square root two is very close to 1.4, which would be a whole number ratio of 10 to 14.",False,False,good,,,
+But 10 squared plus 10 squared is definitely not 14 squared.,False,False,good,,,
+"And a ratio of 1,000 to 1,414 is even closer.",False,False,good,,,
+"And a ratio of 100,141,421,421,336 is very close indeed, but still not exact.",False,False,good,,,
+So what is it?,False,False,good,,,
+Pythagoras wanted to find the perfect ratio.,False,False,good,,,
+"He knew must exist, but meanwhile, someone from his very own Pythagorean 
+brotherhood proved their well-known ratio.",False,True,bad,,,
+The square root of two was irrational.,False,True,bad,,,
+"That indecent mal notation, once that small notation was invented, the digits go on forever.",False,True,bad,,,
+"Usually, this proof is given algebraically, something like this, which is pretty simple and 
+beautiful if you know algebra, but the Pythagorean didn't.",False,False,good,,,
+So I'd like to imagine how they thought of this proof.,False,False,good,,,
+Now algebra required.,False,True,bad,,,
+"Okay, so Pythagoras is all like, there's totally a ratio.",True,True,good,,,
+"You can make this with whole numbers, and this guy's like, is not, is two, is not, is two.",True,False,bad,,,
+"Fine, have it your way.",True,True,good,,,
+"So there's a whole number ratio in simplest form, where this square plus this square 
+equals this square.",False,False,good,,,
+"Yeah, that's the Pythagorean theorem, I made it.",False,False,good,,,
+"Yeah, though, for this triangle, you don't even need the full theorem.",False,False,good,,,
+"It's easy to see that it's the same area by cutting each part into four triangles, but I don't 
+want to divide the squares up into triangles.",False,False,good,,,
+I want unit squares.,False,False,good,,,
+"So you mean kind of like this, where this square is divided into units.",False,False,good,,,
+"And so there's this one, and they all fit perfectly into this one, and vice versa, but not like this.",False,True,bad,,,
+"It almost works, but you start dividing the square evenly to fill up the two equal other 
+squares, and you got this one odd one out.",False,False,good,,,
+"There's an odd number of squares to begin with, so you can't divide them evenly 
+between the two squares.",False,False,good,,,
+"There's not even a right triangle, what's your point?",False,True,bad,,,
+Just let you know an odd number like seven isn't going to be it without even trying.,False,True,bad,,,
+An odd number times itself gives an odd number of squares.,False,False,good,,,
+"So whatever this number is, it can't be seven.",False,False,good,,,
+It has to be even.,False,True,bad,,,
+"Okay, so the hypotenuse is even, that's fine.",False,True,bad,,,
+So what if I proved the leg is even two?,False,True,bad,,,
+Then it's not insublisformed.,False,False,good,,,
+"Many ratio were both are even, you divide by two until you can't divide it anymore, 
+because one of them is odd, and then that ratio is the best.",False,False,good,,,
+I thought we were talking about the simplest form ratio.,False,True,bad,,,
+We are.,False,False,good,,,
+"If there's a ratio in simplest form, at least one of the numbers is odd, and since the hypotenuse 
+has to literally be divisible by two, then the leg must be the odd one.",False,False,good,,,
+So what if I proved the leg had to be even?,False,True,bad,,,
+You just proved it's not.,False,True,bad,,,
+It can't be both.,False,True,bad,,,
+"Unless it doesn't exist, what you forget, Pythagoras, is that if this is the square, then the 
+two sides are the same.",False,False,good,,,
+"Just as this is divisible right down the center, so two is divisible the other way, and the 
+number of squares on this side, which are the number of squares in just one leg, is an even number.",False,False,good,,,
+"And for a number of squares to be even, what does the number have to be?",False,False,good,,,
+"Pythagoras, oh my brother, if leg squared is even, then the leg is even, but it can't be even, 
+because it's already odd.",True,True,good,,,
+Unless it doesn't exist.,False,True,bad,,,
+"But if they're both even, you can divide by two and start again.",False,True,bad,,,
+"But this still has to be even, which means this still has to be even, which means you can divide it 
+by two again, but then it has to be even, so everything is even forever, and you never find the 
+perfect ratio, oh beans!",True,True,good,,,
+"He had a vision, a beautiful vision of a world made up of relationships between numbers.",False,False,good,,,
+"If this wasn't a whole number ratio, then what was it?",False,False,good,,,
+"The Pythagorean still believes, wanted to believe, that irrationality was somehow false, and 
+the world was as they wanted it, so this proved stayed secret, until someone spilled the beans.",True,True,good,,,
+"According to some, it was all a guy named Hypasis, and Pythagoras threw him off a boat to 
+drown him as punishment for ruining what had been perfect.",False,False,good,,,
+"Or maybe it was someone else who discovered it, or Hypasis or someone else who was killed 
+by the Pythagorean long after Pythagoras was dead, or maybe they just got exiled who knows, 
+and how did Pythagoras die?",False,False,good,,,
+"According to one guy, some guys got mad because they didn't get into the cool kids' club.",True,True,good,,,
+"So they said Pythagoras's house on fire, Pythagoras was running away, and they were chasing 
+him, but then he came upon a field, and not just any field, but a field of beans.",False,False,good,,,
+"And Pythagoras turned around to face his pursuers and proclaimed, better to be slaughtered 
+by enemies than to trample on beans.",True,True,good,,,
+And he was.,False,False,good,,,
+"Others say he ran off and start from self-to-death, or just got caught by his enemies, because 
+he ran around the bean field instead of through it, or who knows what happened.",False,True,bad,,,
+"People claimed Pythagoras didn't like beans, because he thought they were bad for digestion, 
+or gave you bad dreams, or reminded him of male genitalia, or because he didn't want a club as 
+full of flatulating mathematicians, or he just didn't like them metaphorically.",True,True,good,,,
+"He and his followers were or were in vegetarians, did or didn't sacrifice animals, possibly 
+were only allowed to eat certain colors of birds.",False,False,good,,,
+"I mean, he definitely had a lot of rules to follow, but just what they were and what they 
+meant is lost to history.",False,False,good,,,
+"I'd like to give you a colorful story about exactly what happened with Pythagoras, but 
+somehow that kind of truth doesn't last.",False,False,good,,,
+"What I do know is that the square root of two is irrational, that there's no way to have the 
+length of a side of a square and of the square's diagonal both be whole numbers.",False,False,good,,,
+Mathematical truth is truth that injures.,False,False,good,,,
+"This proof is just as good now as it was 2,500 years ago.",False,False,good,,,
+"I mean, it's awesome, and it shows that there's more to the world than whole numbers, and 
+shame on the Pythagorean who didn't have the beans to admit it,",True,True,good,,,

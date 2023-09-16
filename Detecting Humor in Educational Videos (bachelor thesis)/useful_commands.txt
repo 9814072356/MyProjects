@@ -1,0 +1,26 @@
+# Open a strategy scope.
+with strategy.scope():
+
+-c 'import tensorflow as tf; print(tf.test.is_gpu_available())'
+
+https://www.tensorflow.org/install/pip
+
+conda install -c conda-forge cudatoolkit=11.8.0
+pip install nvidia-cudnn-cu11==8.6.0.163
+
+conda install -c conda-forge cudatoolkit=11.8.0
+
+srun --pty -G 2 apptainer exec /nfs/data/env/tensorflow_2_12_230426.sif python -c 'import tensorflow as tf; print(tf.test.is_gpu_available())'
+
+apptainer -> singularity.sh
+
+sbatch -G 2 singularity.sh  exec /nfs/data/env/tensorflow_2_12_230426.sif python dhumor.py
+
+singularity.sh exec /nfs/data/env/tensorflow_2_12_230426.sif pip install
+
+scp -prv C:\Users\kyanh\Desktop\dhumor\ devbox5:/nfs/home/nguyenk/dhumor
+
+scp -prv devbox5:/nfs/home/nguyenk/dhumor/ C:\Users\kyanh\Desktop\dhumor
+
+squeue --format "%.18i %.9P %.8j %.8u %.2t %.10M %R %C %m %b"
+
