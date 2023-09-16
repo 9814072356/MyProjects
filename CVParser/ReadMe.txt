@@ -1,5 +1,9 @@
-This is a tool for summarizing LinkedIn profiles into a more contrated CV form. 
+Description: summarize LinkedIn profiles into a CV. 
 
-More information on how the tool works can be found in the "CVParser Software.mp4" file. 
+Tutorial: "CVParser Software.mp4". 
 
-Installation guide for windows 10 can be found in the "Installation Guide.txt" file.
+Installation guide: "Installation Guide.txt".
+
+Code base: Django, Python
+
+Database: sqlite3
