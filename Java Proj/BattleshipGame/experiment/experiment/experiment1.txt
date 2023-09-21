@@ -1,0 +1,362 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class DragGroupSample extends Application {
+
+    public static void main( String[] args ) {
+        launch();
+    }
+
+    // list of nodes that are dragged. Can be modified at any time (on the FX Application Thread):
+    private final List<Circle> nodesToDrag = new ArrayList<>();
+
+    private final Circle[] circles = new Circle[3] ;
+
+    private void makeDraggable( Circle circle ) {
+        MouseLocation lastMouseLocation = new MouseLocation();
+
+        // --- remember initial coordinates of mouse cursor and node
+        circle.addEventFilter( MouseEvent.MOUSE_PRESSED, (
+                final MouseEvent mouseEvent ) -> {
+            lastMouseLocation.x = mouseEvent.getSceneX() ;
+            lastMouseLocation.y = mouseEvent.getSceneY() ;
+
+            // just some example logic to modify the list of dragged nodes:
+            boolean found = false ;
+            for (Circle c : circles) {
+                if (c == circle) found = true ;
+                if (found) nodesToDrag.add(c);
+            }
+        } );
+
+        // --- Shift node calculated from mouse cursor movement
+        circle.addEventFilter( MouseEvent.MOUSE_DRAGGED, (
+                final MouseEvent mouseEvent ) -> {
+                    double deltaX = mouseEvent.getSceneX() - lastMouseLocation.x ;
+                    double deltaY = mouseEvent.getSceneY() - lastMouseLocation.y ;
+                    for (Circle c : nodesToDrag) {
+                        c.setCenterX( c.getCenterX() + deltaX  );
+                        c.setCenterY( c.getCenterY() + deltaY );
+                    }
+                    lastMouseLocation.x = mouseEvent.getSceneX();
+                    lastMouseLocation.y = mouseEvent.getSceneY();
+        } );
+
+        circle.addEventFilter(MouseEvent.MOUSE_RELEASED, mouseEvent -> nodesToDrag.clear());
+
+    }
+
+    @Override
+    public void start( Stage primaryStage ) throws Exception {
+
+        circles[0] = new Circle( 30.0, 30.0, 30.0, Color.RED );
+        circles[1] = new Circle( 45.0, 45.0, 30.0, Color.GREEN );
+        circles[2] = new Circle( 60.0, 60.0, 30.0, Color.BLUE );
+
+        for ( Circle circle : circles ) {
+            makeDraggable( circle );
+        }
+
+        Group root = new Group();
+        root.getChildren().addAll( circles[0], circles[1], circles[2] );
+        primaryStage.setResizable( false );
+        primaryStage.setScene( new Scene( root, 400, 350 ) );
+        primaryStage.setTitle( DragGroupSample.class.getSimpleName() );
+        primaryStage.show();
+    }
+
+    private static final class MouseLocation {
+        public double x, y;
+    }
+}
+
+
+
+
+
+
+            char c = (char)('A' + i);
+
+
+
+public class Ship {
+    private ArrayList<Coord> coords;
+
+    public Ship() {
+        coords = new ArrayList<>();
+    }
+
+    public Coord getCompartmentAtIndex(int index) {
+        return coords.get(index);
+    }
+}
+
+
+
+
+package battleship;
+
+public class Coord {
+    private int x;
+    private int y;
+
+    public Coord(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+}
+
+
+
+
+public void setNorth(boolean value) {
+        directions[0] = value;
+    }
+
+    public boolean getNorth() {
+        return directions[0];
+    }
+
+    public void setEast(boolean value) {
+        directions[1] = value;
+    }
+
+    public boolean getEast() {
+        return directions[1];
+    }
+
+    public void setSouth(boolean value) {
+        directions[2] = value;
+    }
+
+    public boolean getSouth() {
+        return directions[2];
+    }
+
+    public void setWest(boolean value) {
+        directions[3] = value;
+    }
+
+    public boolean getWest() {
+        return directions[3];
+    }
+
+
+
+
+
+    public enum Directions {NORTH, EAST, SOUTH, WEST}
+
+
+
+        switch (index) {
+            case 0:
+                component.adjacentComponents[2] = this;
+                break;
+            case 1:
+                component.adjacentComponents[3] = this;
+                break;
+            case 2:
+                component.adjacentComponents[0] = this;
+                break;
+            case 3:
+                component.adjacentComponents[1] = this;
+                break;
+        }
+
+
+
+
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<GridPane fx:controller="battleship.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+</GridPane>
+
+
+
+
+
+
+public void initUI(Stage stage) {
+        //Main grid pane.
+        GridPane root = new GridPane();
+        //Horizontal box to contain boards.
+        HBox boardContainer = new HBox();
+        //Vertical boxes to contain ships.
+        VBox leftShipContainer = new VBox();
+        VBox rightShipContainer = new VBox();
+        //Allie board and Enemy board.
+        GridPane allieBoard = drawBoard();
+        GridPane enemyBoard = drawBoard();
+        //Organize UI components.
+        boardContainer.getChildren().addAll(allieBoard, enemyBoard);
+        boardContainer.setSpacing(50);
+        root.add(leftShipContainer, 0, 0);
+        root.add(boardContainer, 1, 0);
+        root.add(rightShipContainer, 2, 0);
+        root.setAlignment(Pos.CENTER);
+        scene = new Scene(root, HORIZONTAL_SPAN, VERTICAL_SPAN);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
+import javafx.scene.control.Label;
+
+
+
+
+private Group group;
+    private Scene scene;
+    private static final int DIMENSION = 11;
+    private static final int CELL_WIDTH = 25;
+    private static final int CELL_HEIGHT = 25;
+    private static final int VERTICAL_SPAN = 500;
+    private static final int HORIZONTAL_SPAN = 1000;
+    private Tag[][] cells;
+    private int initXPos;
+    private int initYPos;
+
+    Board(Stage stage) {
+        initXPos = (HORIZONTAL_SPAN - CELL_WIDTH * DIMENSION) / 2;
+        initYPos = (VERTICAL_SPAN - CELL_HEIGHT * DIMENSION) / 2;
+        stage.setTitle("Battleship Game - Ally Board");
+        cells = new Tag[DIMENSION][DIMENSION];
+        for(int y = 0; y < DIMENSION; ++y) {
+            for(int x = 0; x < DIMENSION; ++x) {
+                cells[x][y] = Tag.EMPTY;
+            }
+        }
+    }
+
+    private GridPane drawBoard() {
+        GridPane board = new GridPane();
+        int cellXPos = initXPos + CELL_WIDTH;
+        int cellYPos = initYPos + CELL_HEIGHT;
+        Rectangle square = null;
+        //Draw alphabet cells.
+        for (int i = 0; i < DIMENSION; i++) {
+            char c = (char)('A' + i);
+            Text text = new Text(Character.toString(c));
+            text.setFill(Color.BLACK);
+            text.setFont(Font.font("Arial", 15));
+            text.setWrappingWidth(CELL_WIDTH);
+            text.setTextAlignment(TextAlignment.CENTER);
+            board.add(text, i + 1, 0);
+        }
+        //Draw number cells.
+        for (int i = 0; i < DIMENSION; i++) {
+            String numberStr = i + "";
+            Text text = new Text(numberStr);
+            text.setFill(Color.BLACK);
+            text.setFont(Font.font("Arial", 15));
+            text.setWrappingWidth(CELL_WIDTH);
+            text.setTextAlignment(TextAlignment.RIGHT);
+            board.add(text, 0, i + 1);
+        }
+        //Draw board cells.
+        for(int y = 0; y < DIMENSION; ++y) {
+            for(int x = 0; x < DIMENSION; ++x) {
+                if (cells[x][y] == Tag.EMPTY) {
+                    square = new Rectangle(cellXPos, cellYPos, CELL_WIDTH, CELL_HEIGHT);
+                    square.setFill(Color.LIGHTGREY);
+                    square.setStroke(Color.BLACK);
+                    square.setStrokeWidth(1.0D);
+                }
+                cellXPos += CELL_WIDTH;
+                board.add(square, x + 1, y + 1);
+            }
+            cellXPos = initXPos + CELL_WIDTH;
+            cellYPos += CELL_HEIGHT;
+        }
+        return board;
+    }
+
+    public void initUI(Stage stage) {
+        //Main grid pane.
+        GridPane root = new GridPane();
+        //Horizontal box to contain boards.
+        HBox boardContainer = new HBox();
+        //Vertical boxes to contain ships.
+        VBox leftShipContainer = new VBox();
+        VBox rightShipContainer = new VBox();
+        //Allie board and Enemy board.
+        GridPane allieBoard = drawBoard();
+        GridPane enemyBoard = drawBoard();
+        //Organize UI components.
+        boardContainer.getChildren().addAll(allieBoard, enemyBoard);
+        boardContainer.setSpacing(50);
+        root.add(leftShipContainer, 0, 0);
+        root.add(boardContainer, 1, 0);
+        root.add(rightShipContainer, 2, 0);
+        root.setAlignment(Pos.CENTER);
+        scene = new Scene(root, HORIZONTAL_SPAN, VERTICAL_SPAN);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+
+
+
+
+
+
+    private void addComponent(ShipComponent shipComponent) {
+        shipComponents.add(shipComponent);
+    }
+
+    public ShipComponent GetFirstComponent() {
+        return shipComponents.getFirst();
+    }
+
+    public int getNumberOfComponents() {
+        return shipComponents.size();
+    }
+
+
+
+public static LinkedList<Rectangle> drawShip(int x, int y, Ship ship) {
+        int numberOfComponents = ship.getNumberOfComponents();
+        boolean[] drawed = new boolean[numberOfComponents];
+        ShipComponent component = ship.GetFirstComponent();
+        Rectangle block = new Rectangle(x, y, BLOCK_WIDTH, BLOCK_HEIGHT);
+
+    }

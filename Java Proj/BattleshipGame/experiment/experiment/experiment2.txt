@@ -1,0 +1,97 @@
+package battleship;
+
+import javafx.scene.shape.Rectangle;
+
+import java.util.LinkedList;
+import java.util.Random;
+
+public class Ship {
+
+    private static class ShipComponent {
+        private ShipComponent[] adjacentComponents;
+        private boolean marked;
+
+        public ShipComponent() {
+            adjacentComponents = new ShipComponent[4];
+        }
+
+        public void setAdjacentComponent(int index, ShipComponent component) {
+            adjacentComponents[index] = component;
+            component.adjacentComponents[(index + 2) % 4] = this;
+        }
+
+        public ShipComponent getAdjacentComponent(int index) {
+            return adjacentComponents[index];
+        }
+
+        public boolean isMarked() {
+            return marked;
+        }
+
+        public void setMarked(boolean marked) {
+            this.marked = marked;
+        }
+    }
+
+    private ShipComponent[] shipComponents;
+    private static final int BLOCK_WIDTH = 10;
+    private static final int BLOCK_HEIGHT = 10;
+
+    public Ship (int nComponent) {
+        shipComponents = new ShipComponent[nComponent];
+    }
+
+    public int getNumberOfComponents() {
+        return shipComponents.length;
+    }
+
+    public static Ship createShip(int max) {
+        Random r = new Random();
+        int size = r.nextInt(max) + 1;
+        Ship ship = new Ship(size);
+        int index = 0;
+        Ship.ShipComponent component = new Ship.ShipComponent();
+        ship.shipComponents[index++] = component;
+        while (index < size) {
+            ShipComponent nextComponent = new ShipComponent();
+            int dir = r.nextInt(4);
+            while (component.getAdjacentComponent(dir) != null) {
+                dir = r.nextInt(4);
+            }
+            component.setAdjacentComponent(dir, nextComponent);
+            component = nextComponent;
+            ship.shipComponents[index++] = component;
+        }
+        return ship;
+    }
+
+    private void drawComponent(LinkedList<Rectangle> blocks, ShipComponent component, int x, int y) {
+        component.setMarked(true);
+        for (int i = 0; i < 4; i++) {
+            ShipComponent adjacentComponent = component.adjacentComponents[i];
+            if (!adjacentComponent.isMarked()) {
+                switch (i) {
+                    case 0:
+                        drawComponent(blocks, adjacentComponent, x, y - 1);
+                        break;
+                    case 1:
+                        drawComponent(blocks, adjacentComponent, x + 1, y);
+                        break;
+                    case 2:
+                        drawComponent(blocks, adjacentComponent, x, y + 1);
+                        break;
+                    case 3:
+                        drawComponent(blocks, adjacentComponent, x - 1, y);
+                        break;
+                }
+            }
+        }
+        component.setMarked(false);
+    }
+
+    public void drawShip(int x, int y) {
+        LinkedList<Rectangle> blocks = new LinkedList<>();
+        ShipComponent component = shipComponents[0];
+        drawComponent(blocks, component, x, y);
+    }
+}
