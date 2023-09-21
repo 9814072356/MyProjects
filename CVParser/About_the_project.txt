@@ -7,3 +7,5 @@ Installation guide: "Installation Guide.txt".
 Code base: Django, Python
 
 Database: sqlite3
+
+
