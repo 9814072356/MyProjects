@@ -1,4 +1,4 @@
-Description: ticker.c implements a seiries of processes
-		concat.c implements several commands sequentially
+Description: ticker.c implements signal functions 
+	     concat.c implements several unix commands sequentially
 
 Code base: c
