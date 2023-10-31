@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"de.uni_hannover.hci.Ky_Anh.datareader","c":"DataReader","l":"DataReader()","url":"%3Cinit%3E()"},{"p":"de.uni_hannover.hci.Ky_Anh.datareader","c":"DataReader","l":"read(double[][], int[])","url":"read(double[][],int[])"}]

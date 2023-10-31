@@ -1,0 +1,31 @@
+
+public class Fibonacci {					
+
+    /**
+     * main
+     */
+    public static void main(String[] args)		//Klammer fehlt am anfang der Methode
+
+        System.out = null;						//Falsch geschriebene Syntax, soll "System.out.println((String)null)" sein
+        for (int n = 0; n < 10; n++){
+            int f = fibonacci(n);
+            System.out.println("The fibonacci number "+ n + " is  + f);      	//Anführungszeichen fehlt am Ende des Strings
+        }
+    }
+
+    /**
+     * This method recursively computes the nth fibonacci number.
+     *
+     * @param n - The number in the fibonacci sequence to compute.
+     *            Must be greater than 0.
+     *
+     * @return	The nth fibonacci number.
+     */
+    private static int fibonacci(int n)  {
+        if (n = 1 && m = 2) {						//falsch geschriebene token, soll "==" verwendet werden. Nicht zugeweisst 'm'.
+            return l								//Semikolon fehlt. Nicht zugeweisst 'l'
+        }
+
+        return fibomacci(n-1) + fibonacci(n-2);		//Funktionsname falsch geschrieben
+    }
+}}													//Ein Klammer zu viel
