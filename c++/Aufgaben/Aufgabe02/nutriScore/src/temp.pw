@@ -1,0 +1,24 @@
+        //     // if (std::get<1>(meals.at(i)) == 'D' || std::get<1>(meals.at(i)) == 'E')
+        //     // {
+        //     //     int tempWorseFood = 0;
+        //     //     if (std::get<1>(meals.at(i)) == 'D')
+        //     //     {
+        //     //         tempWorseFood = static_cast<int>(std::get<1>(meals.at(i))) * static_cast<int>(std::get<2>(meals.at(i)));
+        //     //     }
+        //     //     else if (std::get<1>(meals.at(i)) == 'E')
+        //     //     {
+        //     //         tempWorseFood = static_cast<int>(std::get<1>(meals.at(i))) * static_cast<int>(std::get<2>(meals.at(i))) * 2;
+        //     //     }
+        //     //     if (tempWorseFood > worstFoodHabit)
+        //     //     {
+        //     //         worstFoodHabit = tempWorseFood;
+        //     //         worstHabitName = static_cast<std::string>(std::get<0>(meals.at(i)));
+        //     //     }
+        //     //     badFoodinVector = true;
+        //     // }
+        //     // if (badFoodinVector == false && i + 1 == meals.size())
+        //     // {
+        //     //     std::cout << "no bad food habit found"
+        //     //               << "\n";
+        //     // }
+        // }
