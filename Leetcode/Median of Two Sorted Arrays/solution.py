@@ -70,11 +70,6 @@ class Solution(object):
         
         track = 0
         tmp = []
-        for i in range(AL, AR+1):
-            print(nums1[i])
-        print("-----------------")
-        for i in range(BL, BR+1):
-            print(nums2[i])
 
         if l1 == 1:
             for i in range(BL, BR + 1):
@@ -106,10 +101,6 @@ class Solution(object):
                     tmp.insert(track+1, float(nums2[BR+1]))
         
         res, res1 = tmp[k-1], tmp[k] 
-        print(tmp)
-        print(k)
-        print(res)
-        print(res1)
         if (len(nums1) + len(nums2)) % 2 == 0:
             return (res + res1)/2
 
