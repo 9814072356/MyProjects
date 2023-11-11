@@ -1,12 +1,13 @@
-package battleship;
+package GUI;
 
-public class Vector2d {
+//Coordinates in double. Might be useful later
+public class Vector2dDouble {
     private double x;
     private double y;
 
-    public Vector2d() {}
+    public Vector2dDouble() {}
 
-    public Vector2d(int x, int y) {
+    public Vector2dDouble(double x, double y) {
         this.x = x;
         this.y = y;
     }

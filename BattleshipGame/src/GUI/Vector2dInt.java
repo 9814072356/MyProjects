@@ -1,5 +1,6 @@
-package battleship;
+package GUI;
 
+//Coordinates in int
 public class Vector2dInt {
     private int x;
     private int y;
@@ -25,5 +26,11 @@ public class Vector2dInt {
 
     public void setY(int y) {
         this.y = y;
+    }
+    
+    @Override
+    public String toString() {    	
+		return "("+this.x+","+this.y+")";
+    	
     }
 }
