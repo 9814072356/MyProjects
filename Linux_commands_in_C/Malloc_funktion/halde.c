@@ -99,6 +99,7 @@ void *halde_malloc (size_t size) {
                                 head = (struct mblock*)(head->memory + head->size);
                                 head->next = NULL;
                                 head->size = prevSize - size;
+                                retMemPt = head;
                                 // KORREKTUR: the new mBlock take some space as well so the right calculated size would be prevSize - size - mBlockSIZE (-1P)
                         }
                 }else{
